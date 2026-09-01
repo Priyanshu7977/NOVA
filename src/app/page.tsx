@@ -9,6 +9,7 @@ import { NikeAddToCartModal } from '@/components/ui/NikeAddToCartModal';
 import { CartDrawer } from '@/components/ui/CartDrawer';
 import { NikeCheckoutModal } from '@/components/ui/NikeCheckoutModal';
 import { OutroSection } from '@/components/ui/OutroSection';
+import { CartierTimelineScrubber } from '@/components/ui/CartierTimelineScrubber';
 import { Nova3DCinematicOpening } from '@/components/intro/Nova3DCinematicOpening';
 import { audio } from '@/components/audio/NikeAudioEngine';
 import { useExperience } from '@/context/ExperienceContext';
@@ -285,7 +286,15 @@ export default function NikeInnovationPage() {
       {/* 7. Official Nova.in Multi-Step Checkout Modal with Real Payment Gateways */}
       <NikeCheckoutModal />
 
-      {/* 8. Fullscreen 3D Animated Cinematic Opening Experience */}
+      {/* 8. Cartier-Inspired Luxury Bottom Timeline Scrubber */}
+      {!showIntro && (
+        <CartierTimelineScrubber
+          currentUniverseIndex={currentProgress}
+          onNavigateToUniverse={navigateToUniverse}
+        />
+      )}
+
+      {/* 9. Fullscreen 3D Animated Cinematic Opening Experience */}
       {showIntro && (
         <Nova3DCinematicOpening onComplete={() => setShowIntro(false)} />
       )}

@@ -2,10 +2,12 @@
 
 import React, { useRef, useState, useMemo, Suspense } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { NikeUniverseData, NikeProductColorway } from '@/data/nikeUniverses';
 import { RealNikeSneaker3D } from './RealNikeSneaker3D';
 import { audio } from '@/components/audio/NikeAudioEngine';
+import { Sparkles, Zap, Activity, Layers, X } from 'lucide-react';
 
 interface NikeSneakerRendererProps {
   universe: NikeUniverseData;
@@ -14,24 +16,25 @@ interface NikeSneakerRendererProps {
   manualRotationY?: number;
   scrollProgress?: number;
   isHovered?: boolean;
-  onClick?: () => void;
 }
 
-// 3D Floating Interactive Telemetry Badge Pin
+// 3D Floating Interactive Telemetry Hotspot Pin & Expandable Card
 const TechHotspotPin: React.FC<{
   position: [number, number, number];
-  label: string;
-  sublabel: string;
+  title: string;
+  description: string;
+  material: string;
   color: string;
-  onClick: () => void;
-}> = ({ position, label, sublabel, color, onClick }) => {
+  isActive: boolean;
+  onToggle: () => void;
+}> = ({ position, title, description, material, color, isActive, onToggle }) => {
   const [hovered, setHovered] = useState(false);
   const pinRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
     if (!pinRef.current) return;
     const t = state.clock.getElapsedTime();
-    pinRef.current.position.y = position[1] + Math.sin(t * 3 + position[0]) * 0.04;
+    pinRef.current.position.y = position[1] + Math.sin(t * 3.5 + position[0] * 2) * 0.035;
   });
 
   return (
@@ -40,49 +43,85 @@ const TechHotspotPin: React.FC<{
       position={position}
       onClick={(e) => {
         e.stopPropagation();
-        audio.playChime(720, 'sine', 0.15);
-        onClick();
+        audio.playChime(isActive ? 520 : 880, 'sine', 0.15);
+        onToggle();
       }}
       onPointerOver={(e) => {
         e.stopPropagation();
         setHovered(true);
-        audio.playChime(880, 'sine', 0.08);
+        audio.playChime(780, 'sine', 0.05);
       }}
       onPointerOut={() => setHovered(false)}
     >
       {/* Outer Pulsing Ring */}
       <mesh>
-        <ringGeometry args={[0.07, 0.1, 32]} />
+        <ringGeometry args={[0.065, 0.095, 32]} />
         <meshBasicMaterial
           color={color}
           transparent
-          opacity={hovered ? 0.95 : 0.6}
+          opacity={isActive ? 1.0 : hovered ? 0.9 : 0.65}
           side={THREE.DoubleSide}
         />
       </mesh>
 
-      {/* Inner Glowing Dot */}
+      {/* Inner Glowing Center Dot */}
       <mesh>
-        <circleGeometry args={[0.045, 32]} />
-        <meshBasicMaterial color="#ffffff" side={THREE.DoubleSide} />
+        <circleGeometry args={[0.04, 32]} />
+        <meshBasicMaterial color={isActive ? '#ffffff' : color} side={THREE.DoubleSide} />
       </mesh>
+
+      {/* Interactive Floating HTML Luxury Card when active */}
+      {isActive && (
+        <Html position={[0.15, 0.1, 0]} center={false} distanceFactor={8} zIndexRange={[100, 0]}>
+          <div className="w-56 p-3 rounded-2xl bg-[#0f172a]/95 text-white border border-white/20 shadow-2xl backdrop-blur-xl animate-fade-in select-none pointer-events-auto">
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center space-x-1.5">
+                <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: color }} />
+                <span className="text-[9px] font-mono uppercase font-bold tracking-widest text-[#38bdf8]">
+                  HOTSPOT TELEMETRY
+                </span>
+              </div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggle();
+                }}
+                className="text-gray-400 hover:text-white"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            <span className="font-display text-xs font-black uppercase block tracking-tight text-white mb-0.5">
+              {title}
+            </span>
+            <p className="font-sans text-[10px] text-gray-300 leading-snug font-medium mb-1.5">
+              {description}
+            </p>
+            <div className="pt-1.5 border-t border-white/10 flex items-center justify-between text-[8px] font-mono text-[#38bdf8] font-bold">
+              <span>TECH: {material}</span>
+            </div>
+          </div>
+        </Html>
+      )}
     </group>
   );
 };
 
 export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
   universe,
-  activeColorway,
   interactionProgress,
   manualRotationY = 0,
   scrollProgress = 0,
   isHovered = false,
-  onClick,
 }) => {
   const groupRef = useRef<THREE.Group>(null);
   const shoeMeshRef = useRef<THREE.Group>(null);
   const shadowRef = useRef<THREE.Mesh>(null);
   const shockwaveRef = useRef<THREE.Mesh>(null);
+
+  // Active Selected Hotspot Index (-1 = none, 0, 1, 2)
+  const [activeHotspotIndex, setActiveHotspotIndex] = useState<number>(-1);
 
   // Physics-based 3D Acrobatic Corkscrew Flip
   const [isFlipping, setIsFlipping] = useState(false);
@@ -90,7 +129,7 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
   const [shockwaveScale, setShockwaveScale] = useState(0);
   const [shockwaveOpacity, setShockwaveOpacity] = useState(0);
 
-  // Realistic Soft Contact Ambient Occlusion Drop Shadow
+  // Realistic Soft Contact Drop Shadow
   const shadowTexture = useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = 256;
@@ -116,6 +155,7 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
     flipProgressRef.current = 0;
     setShockwaveScale(0.2);
     setShockwaveOpacity(0.9);
+    setActiveHotspotIndex(-1); // Close any active hotspot during flip
   };
 
   useFrame((state, delta) => {
@@ -177,6 +217,33 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
     }
   });
 
+  // Hotspots definitions for the shoe
+  const hotspots = useMemo(() => {
+    return [
+      {
+        id: 0,
+        position: [0.72, 0.48, 0.22] as [number, number, number],
+        title: universe.highlightTitle,
+        description: universe.highlightDescription,
+        material: universe.explodedLayers[0]?.material || 'Dynamic TPU Unit',
+      },
+      {
+        id: 1,
+        position: [-0.05, 0.08, 0.2] as [number, number, number],
+        title: universe.knowHowTitle,
+        description: universe.knowHowDescription,
+        material: universe.explodedLayers[1]?.material || 'Propulsion Plate',
+      },
+      {
+        id: 2,
+        position: [0.22, 0.82, -0.15] as [number, number, number],
+        title: 'ADAPTIVE HAPTIC CHASSIS',
+        description: 'Micro-ribbed dimensional weave engineered for instant anatomical lockdown.',
+        material: 'VaporWeave & Flyknit Mesh',
+      },
+    ];
+  }, [universe]);
+
   return (
     <group ref={groupRef} scale={[1.45, 1.45, 1.45]} position={[0, 0, 0]}>
       {/* 1. REALISTIC SOFT CONTACT DROP SHADOW */}
@@ -229,17 +296,25 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
             manualRotationY={manualRotationY}
             scrollProgress={scrollProgress}
             isHovered={isHovered}
+            activeHotspot={activeHotspotIndex}
           />
         </Suspense>
 
-        {/* 4. INTERACTIVE 3D HOTSPOT TELEMETRY PIN */}
-        <TechHotspotPin
-          position={[0.75, 0.68, 0.18]}
-          label={universe.highlightTitle}
-          sublabel="CLICK TO LAUNCH FLIP"
-          color={universe.accentColor}
-          onClick={triggerRealisticFlip}
-        />
+        {/* 4. INTERACTIVE 3D HOTSPOT TELEMETRY PINS (Cartier-Style Hotspots) */}
+        {hotspots.map((hs) => (
+          <TechHotspotPin
+            key={hs.id}
+            position={hs.position}
+            title={hs.title}
+            description={hs.description}
+            material={hs.material}
+            color={universe.accentColor}
+            isActive={activeHotspotIndex === hs.id}
+            onToggle={() => {
+              setActiveHotspotIndex((prev) => (prev === hs.id ? -1 : hs.id));
+            }}
+          />
+        ))}
       </group>
     </group>
   );
