@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { Volume2, VolumeX, Compass, X, ExternalLink, Sparkles, Layers } from 'lucide-react';
 import { NIKE_UNIVERSES, CONTRAST_ROOM_PALETTES } from '@/data/nikeUniverses';
 import { audio } from '@/components/audio/NikeAudioEngine';
+import { MiniSneakerCanvas } from './MiniSneakerCanvas';
 
 interface NikeTunnelNavProps {
   currentUniverseIndex: number;
@@ -263,13 +264,9 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
                   </span>
                 </div>
 
-                {/* Real Photographic Shoe Image */}
-                <div className="w-full h-32 my-3 rounded-2xl bg-black/[0.02] flex items-center justify-center overflow-hidden p-2">
-                  <img
-                    src={u.realImageUrl}
-                    alt={u.productName}
-                    className="w-full h-full object-contain filter drop-shadow-md group-hover:scale-115 group-hover:-rotate-6 transition-all duration-300"
-                  />
+                {/* Exact 3D Sneaker Model Canvas */}
+                <div className="w-full h-32 my-3 rounded-2xl bg-black/[0.02] flex items-center justify-center overflow-hidden">
+                  <MiniSneakerCanvas universe={u} />
                 </div>
 
                 <div className="flex items-center justify-between pt-2 border-t border-black/[0.06]">

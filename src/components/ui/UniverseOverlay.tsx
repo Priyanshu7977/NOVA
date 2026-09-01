@@ -4,6 +4,7 @@ import React, { useMemo } from 'react';
 import { ChevronDown, ArrowRight, Sparkles, Layers, RotateCw, Activity, Zap, Clock } from 'lucide-react';
 import { NIKE_UNIVERSES, NikeUniverseData, CONTRAST_ROOM_PALETTES } from '@/data/nikeUniverses';
 import { audio } from '@/components/audio/NikeAudioEngine';
+import { MiniSneakerCanvas } from './MiniSneakerCanvas';
 
 interface UniverseOverlayProps {
   currentUniverseIndex: number; // 0 to 7
@@ -256,11 +257,7 @@ export const UniverseOverlay: React.FC<UniverseOverlayProps> = ({
                 GENUINE 3D SILHOUETTE
               </span>
               <div className="w-full h-32 flex items-center justify-center overflow-hidden">
-                <img
-                  src={currentUniverse.realImageUrl}
-                  alt={currentUniverse.productName}
-                  className="w-full h-full object-contain filter drop-shadow-md group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300"
-                />
+                <MiniSneakerCanvas universe={currentUniverse} />
               </div>
               <div
                 className="flex items-center justify-between mt-2 pt-2 border-t transition-colors duration-500"
