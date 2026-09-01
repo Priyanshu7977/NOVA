@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Volume2, VolumeX, Compass, X, ExternalLink, Sparkles, Layers } from 'lucide-react';
+import { Volume2, VolumeX, Compass, X, ExternalLink, Sparkles, Layers, ShoppingBag } from 'lucide-react';
 import { NIKE_UNIVERSES, CONTRAST_ROOM_PALETTES } from '@/data/nikeUniverses';
 import { audio } from '@/components/audio/NikeAudioEngine';
 import { MiniSneakerCanvas } from './MiniSneakerCanvas';
+import { useExperience } from '@/context/ExperienceContext';
 
 interface NikeTunnelNavProps {
   currentUniverseIndex: number;
@@ -15,8 +16,11 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
   currentUniverseIndex,
   onNavigateToUniverse,
 }) => {
+  const { cartItems, setIsCartOpen } = useExperience();
   const [isMuted, setIsMuted] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const handleToggleSound = () => {
     const unmuted = audio.toggleMute();
@@ -139,6 +143,31 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
             >
               {isMuted ? 'SOUND OFF' : 'SOUND ON'}
             </span>
+          </button>
+
+          {/* Shopping Bag Button with Live Item Badge */}
+          <button
+            onClick={() => {
+              audio.playClick();
+              setIsCartOpen(true);
+            }}
+            style={{
+              backgroundColor: activePalette.badgeBg,
+              borderColor: activePalette.badgeBorder,
+              color: activePalette.textHeading,
+            }}
+            className="relative flex items-center space-x-2 px-4 py-2 rounded-full border font-sans font-bold text-xs tracking-wider uppercase hover:opacity-90 transition-all active:scale-95 shadow-sm"
+          >
+            <ShoppingBag className="w-4 h-4" />
+            <span className="hidden sm:inline">BAG</span>
+            {totalCartCount > 0 && (
+              <span
+                className="w-5 h-5 rounded-full text-[10px] font-black flex items-center justify-center text-white"
+                style={{ backgroundColor: activePalette.textAccent }}
+              >
+                {totalCartCount}
+              </span>
+            )}
           </button>
 
           {/* Quick Universe Jump Menu Toggle */}

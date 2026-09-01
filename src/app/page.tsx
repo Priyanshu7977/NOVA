@@ -5,9 +5,12 @@ import { NIKE_UNIVERSES, CONTRAST_ROOM_PALETTES, NikeUniverseData } from '@/data
 import { TunnelCanvas } from '@/components/tunnel/TunnelCanvas';
 import { NikeTunnelNav } from '@/components/ui/NikeTunnelNav';
 import { UniverseOverlay } from '@/components/ui/UniverseOverlay';
-import { InnovationModal } from '@/components/ui/InnovationModal';
+import { NikeAddToCartModal } from '@/components/ui/NikeAddToCartModal';
+import { CartDrawer } from '@/components/ui/CartDrawer';
+import { NikeCheckoutModal } from '@/components/ui/NikeCheckoutModal';
 import { OutroSection } from '@/components/ui/OutroSection';
 import { audio } from '@/components/audio/NikeAudioEngine';
+import { useExperience } from '@/context/ExperienceContext';
 
 // Error Boundary for Three.js Canvas
 class CanvasErrorBoundary extends React.Component<
@@ -65,7 +68,6 @@ export default function NikeInnovationPage() {
     let animationFrameId: number;
 
     const updateLoop = () => {
-      // Smooth Exponential Lerp
       const diff = targetProgressRef.current - currentProgressRef.current;
       if (Math.abs(diff) > 0.0005) {
         currentProgressRef.current += diff * 0.085;
@@ -78,7 +80,7 @@ export default function NikeInnovationPage() {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  // Handle URL Hash Deep Linking (Cartier Style)
+  // Handle URL Hash Deep Linking
   useEffect(() => {
     setIsMounted(true);
     const hash = window.location.hash.replace('#', '');
@@ -122,21 +124,18 @@ export default function NikeInnovationPage() {
   // Continuous Buttery Smooth Wheel Listener with Auto-Magnetic Snapping
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      if (selectedUniverseModal) return; // Prevent scrolling when modal is open
+      if (selectedUniverseModal) return;
 
-      // Gentle, natural normalized delta
       const scrollSensitivity = 0.0018;
       const delta = e.deltaY * scrollSensitivity;
 
       targetProgressRef.current = Math.max(0, Math.min(7, targetProgressRef.current + delta));
 
-      // Auto-Magnetic Snap to closest room after user pauses scrolling
       if (snapTimeoutRef.current) clearTimeout(snapTimeoutRef.current);
       snapTimeoutRef.current = setTimeout(() => {
         const nearestRoom = Math.round(targetProgressRef.current);
         targetProgressRef.current = nearestRoom;
 
-        // Sync hash
         if (nearestRoom >= 1 && nearestRoom <= 6) {
           const u = NIKE_UNIVERSES[nearestRoom - 1];
           if (u) window.history.replaceState(null, '', `#${u.anchor}`);
@@ -167,23 +166,20 @@ export default function NikeInnovationPage() {
     const deltaX = e.clientX - dragStartXRef.current;
     const deltaY = e.clientY - dragStartYRef.current;
 
-    // Horizontal drag rotates the active shoe
     setManualRotationY((prev) => prev + deltaX * 0.008);
     dragStartXRef.current = e.clientX;
 
-    // Vertical drag smoothly shifts the camera progress
     targetProgressRef.current = Math.max(0, Math.min(7, targetProgressRef.current - deltaY * 0.003));
     dragStartYRef.current = e.clientY;
   };
 
   const handlePointerUp = () => {
     isDraggingRef.current = false;
-    // Snap to nearest room on pointer release
     const nearestRoom = Math.round(targetProgressRef.current);
     targetProgressRef.current = nearestRoom;
   };
 
-  // Interactive Action Button (Hold / Pump / Explode)
+  // Interactive Action Button
   const handleTriggerInteractionStart = () => {
     setIsInteracting(true);
     const activeIndex = Math.round(currentProgress);
@@ -236,7 +232,7 @@ export default function NikeInnovationPage() {
       className="relative text-[#18181b] w-full h-screen overflow-hidden select-none transition-colors duration-700"
       style={{ backgroundColor: activeBgColor }}
     >
-      {/* 1. Top Luxury Navigation Bar */}
+      {/* 1. Top Luxury Navigation Bar with Bag Counter */}
       <NikeTunnelNav
         currentUniverseIndex={currentProgress}
         onNavigateToUniverse={navigateToUniverse}
@@ -253,6 +249,7 @@ export default function NikeInnovationPage() {
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
+            onSelectUniverse={(u) => setSelectedUniverseModal(u)}
           />
         </CanvasErrorBoundary>
       )}
@@ -273,11 +270,17 @@ export default function NikeInnovationPage() {
         <OutroSection onNavigateToUniverse={navigateToUniverse} />
       )}
 
-      {/* 5. Full-Screen Savoir-Faire & Innovation Specifications Modal */}
-      <InnovationModal
+      {/* 5. Official Nike.in Add to Cart & Size Selection Modal */}
+      <NikeAddToCartModal
         universe={selectedUniverseModal}
         onClose={() => setSelectedUniverseModal(null)}
       />
+
+      {/* 6. Nike Slide-Out Bag / Cart Drawer */}
+      <CartDrawer />
+
+      {/* 7. Official Nike.in Multi-Step Checkout Modal with Real Payment Gateways */}
+      <NikeCheckoutModal />
     </main>
   );
 }

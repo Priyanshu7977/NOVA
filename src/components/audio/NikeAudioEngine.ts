@@ -236,6 +236,11 @@ class NikeAudioEngine {
     } catch (_) {}
   }
 
+  // Subtle UI Click Sound
+  public playClick() {
+    this.playChime(750, 'sine', 0.06);
+  }
+
   // Subtle UI Chime / Click
   public playChime(freq: number = 660, type: OscillatorType = 'sine', duration: number = 0.15) {
     if (!this.ctx || this.isMuted) return;

@@ -16,6 +16,7 @@ interface TunnelCanvasProps {
   onPointerDown?: (e: React.PointerEvent) => void;
   onPointerMove?: (e: React.PointerEvent) => void;
   onPointerUp?: (e: React.PointerEvent) => void;
+  onSelectUniverse?: (universe: any) => void;
 }
 
 // Dynamic Real-Time Color Interpolator for 3D Background & Fog
@@ -136,6 +137,7 @@ export const TunnelCanvas: React.FC<TunnelCanvasProps> = ({
   onPointerDown,
   onPointerMove,
   onPointerUp,
+  onSelectUniverse,
 }) => {
   const roomDistance = 24;
 
@@ -213,6 +215,7 @@ export const TunnelCanvas: React.FC<TunnelCanvasProps> = ({
                   manualRotationY={isCurrent ? manualRotationY : 0}
                   scrollProgress={currentUniverseProgress}
                   isHovered={isCurrent && isInteracting}
+                  onClick={() => onSelectUniverse?.(universe)}
                 />
               </group>
             );
