@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useRef, useState, useMemo, Suspense } from 'react';
+import React, { useRef, useState, useEffect, useMemo, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Float, OrbitControls } from '@react-three/drei';
+import { useGLTF, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { NikeUniverseData } from '@/data/nikeUniverses';
 import { audio } from '@/components/audio/NikeAudioEngine';
@@ -11,13 +11,12 @@ import {
   Sparkles,
   Zap,
   X,
-  Maximize2,
-  Minimize2,
-  Activity,
   RotateCw,
-  Shield,
   ShoppingBag,
   Sliders,
+  MousePointer,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import { useExperience } from '@/context/ExperienceContext';
 
@@ -83,7 +82,7 @@ const ExplodedLayer: React.FC<{
     if (!meshRef.current) return;
     const exp = explosionProgress;
 
-    // Smoothly calculate layer displacement
+    // Smoothly calculate layer displacement based on scroll/slider
     const targetX = offset[0] * exp;
     const targetY = offset[1] * exp;
     const targetZ = offset[2] * exp;
@@ -121,8 +120,8 @@ const ExplodedSneakerScene: React.FC<{
     if (!groupRef.current) return;
     const t = state.clock.getElapsedTime();
 
-    // Slow ambient rotation when not dragging
-    groupRef.current.rotation.y += delta * 0.15;
+    // Slow ambient levitation
+    groupRef.current.rotation.y += delta * 0.12;
     groupRef.current.position.y = Math.sin(t * 1.5) * 0.08;
   });
 
@@ -140,7 +139,7 @@ const ExplodedSneakerScene: React.FC<{
           metalness: 0.35,
           clearcoat: 0.9,
           emissive: universe.accentColor,
-          emissiveIntensity: focusedLayer === 0 ? 0.45 : 0.08,
+          emissiveIntensity: focusedLayer === 0 ? 0.5 : 0.08,
           opacity: focusedLayer === -1 || focusedLayer === 0 ? 1.0 : 0.25,
         }}
         isActive={focusedLayer === 0}
@@ -159,7 +158,7 @@ const ExplodedSneakerScene: React.FC<{
           metalness: 0.95,
           clearcoat: 1.0,
           emissive: '#38bdf8',
-          emissiveIntensity: focusedLayer === 1 ? 0.75 : 0.25,
+          emissiveIntensity: focusedLayer === 1 ? 0.8 : 0.25,
           opacity: focusedLayer === -1 || focusedLayer === 1 ? 1.0 : 0.3,
         }}
         isActive={focusedLayer === 1}
@@ -178,7 +177,7 @@ const ExplodedSneakerScene: React.FC<{
           metalness: 0.05,
           clearcoat: 0.2,
           emissive: '#ffffff',
-          emissiveIntensity: focusedLayer === 2 ? 0.3 : 0.02,
+          emissiveIntensity: focusedLayer === 2 ? 0.35 : 0.02,
           opacity: focusedLayer === -1 || focusedLayer === 2 ? 1.0 : 0.25,
         }}
         isActive={focusedLayer === 2}
@@ -197,7 +196,7 @@ const ExplodedSneakerScene: React.FC<{
           metalness: 0.2,
           wireframe: false,
           emissive: universe.themeColor,
-          emissiveIntensity: focusedLayer === 3 ? 0.5 : 0.05,
+          emissiveIntensity: focusedLayer === 3 ? 0.55 : 0.05,
           opacity: focusedLayer === -1 || focusedLayer === 3 ? 1.0 : 0.25,
         }}
         isActive={focusedLayer === 3}
@@ -213,9 +212,48 @@ export const SneakerMacroInspection3D: React.FC<SneakerMacroInspection3DProps> =
 }) => {
   const { addToCart, setIsCartOpen, setIsCheckoutOpen } = useExperience();
 
-  const [explosionFactor, setExplosionFactor] = useState<number>(0.75); // 0 (assembled) to 1 (fully exploded)
+  const [explosionFactor, setExplosionFactor] = useState<number>(0.65); // 0 (assembled) to 1 (fully exploded)
   const [focusedLayer, setFocusedLayer] = useState<number>(-1); // -1 = all
   const [isClosing, setIsClosing] = useState<boolean>(false);
+  const touchStartY = useRef(0);
+
+  // SCROLL-DRIVEN 3D DECONSTRUCTION & REASSEMBLY (CARTIER STYLE)
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const delta = e.deltaY * 0.0016;
+      setExplosionFactor((prev) => {
+        const next = Math.max(0, Math.min(1.0, prev + delta));
+
+        // Auto update focusedLayer based on scroll position
+        if (next < 0.18) {
+          setFocusedLayer(-1);
+        } else if (next < 0.45) {
+          setFocusedLayer(0);
+        } else if (next < 0.70) {
+          setFocusedLayer(1);
+        } else if (next < 0.88) {
+          setFocusedLayer(2);
+        } else {
+          setFocusedLayer(3);
+        }
+        return next;
+      });
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const deltaY = (touchStartY.current - e.touches[0].clientY) * 0.004;
+    touchStartY.current = e.touches[0].clientY;
+    setExplosionFactor((prev) => Math.max(0, Math.min(1.0, prev + deltaY)));
+  };
 
   if (!universe) return null;
 
@@ -261,6 +299,8 @@ export const SneakerMacroInspection3D: React.FC<SneakerMacroInspection3DProps> =
       className={`fixed inset-0 z-50 overflow-hidden bg-[#07090e]/95 backdrop-blur-2xl text-white flex flex-col justify-between transition-all duration-500 select-none ${
         isClosing ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
       }`}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
     >
       {/* 1. Fullscreen 3D Three.js Studio Canvas */}
       <div className="absolute inset-0 z-10 cursor-grab active:cursor-grabbing">
@@ -287,12 +327,10 @@ export const SneakerMacroInspection3D: React.FC<SneakerMacroInspection3DProps> =
             />
           </Suspense>
 
-          {/* 360 Orbit Controls */}
+          {/* 360 Orbit Controls with Wheel mapped to Layer Explosion */}
           <OrbitControls
             enablePan={false}
-            enableZoom={true}
-            minDistance={2.5}
-            maxDistance={7.5}
+            enableZoom={false}
             rotateSpeed={0.8}
             dampingFactor={0.08}
           />
@@ -314,7 +352,7 @@ export const SneakerMacroInspection3D: React.FC<SneakerMacroInspection3DProps> =
                 {universe.productName}
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-[9px] font-mono font-bold text-[#38bdf8] uppercase tracking-widest border border-white/15">
-                3D DECONSTRUCTION MODE
+                SCROLLABLE 3D DECONSTRUCTION
               </span>
             </div>
             <span className="text-[11px] font-sans text-gray-400 font-medium">
@@ -334,7 +372,7 @@ export const SneakerMacroInspection3D: React.FC<SneakerMacroInspection3DProps> =
         </div>
       </header>
 
-      {/* 3. Interactive Layer Focus Switcher (Floating Cartier-Style Pills) */}
+      {/* 3. Interactive Layer Focus Switcher & Scroll Prompts */}
       <div className="relative z-20 flex-1 flex flex-col justify-between p-6 sm:px-12 pointer-events-none">
         {/* Left Layer Selectors */}
         <div className="flex flex-col space-y-2.5 max-w-sm pointer-events-auto mt-4">
@@ -362,6 +400,9 @@ export const SneakerMacroInspection3D: React.FC<SneakerMacroInspection3DProps> =
               key={layer.id}
               onClick={() => {
                 setFocusedLayer(layer.id);
+                // Also position slider appropriately
+                const targetExp = 0.35 + layer.id * 0.2;
+                setExplosionFactor(targetExp);
                 audio.playChime(600 + layer.id * 100, 'sine', 0.15);
               }}
               className={`p-3 rounded-2xl border text-left transition-all ${
@@ -388,10 +429,20 @@ export const SneakerMacroInspection3D: React.FC<SneakerMacroInspection3DProps> =
           ))}
         </div>
 
-        {/* Center Prompt & 360 Drag Cue */}
-        <div className="self-center flex items-center space-x-2 px-5 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-mono text-gray-300 font-bold uppercase tracking-wider">
-          <RotateCw className="w-3.5 h-3.5 text-[#38bdf8] animate-spin" />
-          <span>DRAG 3D MODEL TO ROTATE 360° • PINCH TO ZOOM</span>
+        {/* Center Prompt & Cartier-Style Scroll Prompt */}
+        <div className="self-center flex flex-col items-center space-y-2 pointer-events-auto">
+          <div className="flex items-center space-x-3 px-6 py-2.5 rounded-full bg-black/70 backdrop-blur-xl border border-white/20 text-xs font-mono text-white font-bold uppercase tracking-wider shadow-2xl">
+            <MousePointer className="w-4 h-4 text-[#38bdf8] animate-bounce" />
+            <span>SCROLL MOUSE WHEEL TO DECONSTRUCT & ASSEMBLE</span>
+            <span className="px-2 py-0.5 rounded-full bg-[#0284c7] text-white text-[10px]">
+              {Math.round(explosionFactor * 100)}%
+            </span>
+          </div>
+
+          <div className="flex items-center space-x-2 text-[10px] font-mono text-gray-400">
+            <RotateCw className="w-3 h-3 text-[#38bdf8] animate-spin" />
+            <span>DRAG 3D MODEL TO ROTATE 360°</span>
+          </div>
         </div>
       </div>
 
@@ -412,7 +463,13 @@ export const SneakerMacroInspection3D: React.FC<SneakerMacroInspection3DProps> =
               step="0.01"
               value={explosionFactor}
               onChange={(e) => {
-                setExplosionFactor(parseFloat(e.target.value));
+                const val = parseFloat(e.target.value);
+                setExplosionFactor(val);
+                if (val < 0.18) setFocusedLayer(-1);
+                else if (val < 0.45) setFocusedLayer(0);
+                else if (val < 0.70) setFocusedLayer(1);
+                else if (val < 0.88) setFocusedLayer(2);
+                else setFocusedLayer(3);
               }}
               className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-[#38bdf8]"
             />
