@@ -57,7 +57,6 @@ export interface NikeUniverseData {
 export const NIKE_UNIVERSES: NikeUniverseData[] = [
   // ==========================================
   // UNIVERSE 01: AIR MAX DN (DYNAMIC AIR)
-  // High-Contrast Sky Twilight & Deep Royal
   // ==========================================
   {
     id: 'air-max-dn',
@@ -66,20 +65,15 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     sceneRoom: 'CTRL_ROOM_01_Tunnel',
     title: 'AIR MAX DN',
     category: 'DYNAMIC AIR REVOLUTION',
-    subtitle: 'Air Max Dn : The Next Era of Responsive Air',
-    introText:
-      "The art of metamorphosis is at the core of Nova's design DNA. With the Air Max Dn, air ceases to be static—transforming into a dynamic fluid system that shifts in real time with every human stride.",
-    highlightTitle: 'DYNAMIC AIR DUAL-PRESSURE UNIT',
-    highlightDescription:
-      'Engineered with two distinct pressurized air chambers comprising four cylindrical tubes. The rear chambers are pressurized to 15 PSI, while the front chambers sit at 5 PSI, creating seamless kinetic energy transfer from heel strike to toe-off.',
-    knowHowTitle: 'BIOMECHANICAL FLUIDIC ENGINEERING',
-    knowHowDescription:
-      'Born from thousands of hours at the Nova Performance Research Lab (NSRL), the Air Max Dn introduces haptic secondary compression. As you step, air actively flows between tubes, delivering a sensation of infinite rebound and floating transition.',
-    knowHowDescription2:
-      'The multi-layered tactile mesh upper features siliconized aerodynamic print contours, fusing futuristic sculptural aesthetics with high-durability breathability.',
+    subtitle: 'Dynamic Dual-Pressure Air System',
+    introText: 'Next-gen 4-tube fluidic Air pods shifting pressure in real-time with every human stride.',
+    highlightTitle: 'DYNAMIC 4-TUBE AIR PODS',
+    highlightDescription: 'Dual-chamber unit pressurized at 15 PSI (rear) & 5 PSI (front) for effortless heel-to-toe kinetic flow.',
+    knowHowTitle: 'FLUIDIC DYNAMICS',
+    knowHowDescription: 'Active nitrogen air channels compress dynamically to provide infinite rebound and zero-lag transition.',
     interactionType: 'pump',
     interactionLabel: 'Press & Pump Air',
-    interactionInstruction: 'Click or hold to trigger a sonic shockwave, pump the Dynamic Air pods and launch a 3D gravity kick!',
+    interactionInstruction: 'Click or hold to pump the Air pods and unleash a 3D gravity kick.',
     productName: 'Nova Air Max Dn',
     realImageUrl: '/images/shoes/air-max-dn.png',
     priceINR: 14995,
@@ -148,13 +142,12 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     accentColor: '#0284c7',
     fogColor: '#bfdbfe',
     pastelBg: '#dbeafe',
-    bgContrastColor: '#dbeafe', // Crisp Electric Sky Blue
+    bgContrastColor: '#dbeafe',
     themeColor: '#0369a1',
   },
 
   // ==========================================
   // UNIVERSE 02: PEGASUS 41 (THE WORKHORSE)
-  // High-Contrast Electric Volt Sage & Mint
   // ==========================================
   {
     id: 'pegasus-41',
@@ -163,20 +156,15 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     sceneRoom: 'CTRL_ROOM_02_Tunnel',
     title: 'PEGASUS 41',
     category: 'THE ICONIC WORKHORSE',
-    subtitle: 'Pegasus 41 : The Metamorphosis of Daily Velocity',
-    introText:
-      'For over four decades, the Pegasus has been the trusted heartbeat of global running. In its 41st evolution, Nova introduces ReactX foam—a revolutionary compound engineered for superior bounce and environmental harmony.',
+    subtitle: 'Daily Velocity & Responsive Energy',
+    introText: 'Full-length ReactX foam delivers 13% greater energy return with a snappy, resilient ride.',
     highlightTitle: 'REACTX FOAM + DUAL ZOOM AIR',
-    highlightDescription:
-      'The Pegasus 41 debuts full-length ReactX foam, delivering 13% more energy return than standard React foam while slashing carbon emissions by 43%. Paired with forefoot and heel Zoom Air units for a snappy ride.',
-    knowHowTitle: 'CIRCULAR ENGINEERED MESH ARCHITECTURE',
-    knowHowDescription:
-      'Developed through microscopic thermal scans of marathoners in motion, the circular-knit upper features strategic ventilation zones along the toe box and midfoot, paired with a plush padded collar that locks down the Achilles.',
-    knowHowDescription2:
-      'The signature waffle-inspired outsole is updated with segmented flex grooves, ensuring butter-smooth transitions on road, track, or trail.',
+    highlightDescription: 'Low-carbon ReactX foam paired with forefoot and heel Air Zoom pods for cushioned propulsion.',
+    knowHowTitle: 'CIRCULAR-KNIT MESH',
+    knowHowDescription: 'Engineered zonal ventilation for featherweight breathability and locked-in heel stability.',
     interactionType: 'rotate',
     interactionLabel: 'Rotate 360°',
-    interactionInstruction: 'Drag horizontally or click to trigger an explosive sonic ripple and 360° orbital flip.',
+    interactionInstruction: 'Drag or click to trigger an orbital 360° flip.',
     productName: 'Nova Pegasus 41',
     realImageUrl: '/images/shoes/pegasus-41.png',
     priceINR: 11895,
@@ -250,13 +238,12 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     accentColor: '#65a30d',
     fogColor: '#bbf7d0',
     pastelBg: '#dcfce7',
-    bgContrastColor: '#dcfce7', // Fresh High-Contrast Volt Sage
+    bgContrastColor: '#dcfce7',
     themeColor: '#4d7c0f',
   },
 
   // ==========================================
   // UNIVERSE 03: ALPHAFLY 3 (MARATHON VELOCITY)
-  // High-Contrast Sunset Rose & Laser Crimson
   // ==========================================
   {
     id: 'alphafly-3',
@@ -265,20 +252,15 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     sceneRoom: 'CTRL_ROOM_03_Tunnel',
     title: 'ALPHAFLY 3',
     category: 'MARATHON RECORD-BREAKER',
-    subtitle: 'Alphafly 3 : The Science of Sub-Two-Hour Marathon Velocity',
-    introText:
-      'The pinnacle expression of Nova racing alchemy. Engineered to propel world-class marathoners past human boundaries, the Alphafly 3 combines continuous bottom-loaded carbon plates with dual Zoom Air pods and ultra-light ZoomX foam.',
-    highlightTitle: 'CONTINUOUS FLYPLATE + DUAL ZOOM AIR PODS',
-    highlightDescription:
-      'Featuring a single, continuous full-length carbon fiber Flyplate that stabilizes the entire foot from heel to toe. The wider carbon geometry channels explosive propulsion directly through the dual forefoot Air Zoom units.',
-    knowHowTitle: 'ATOMIC WEIGHT REDUCTION & ZOOM-X TUNING',
-    knowHowDescription:
-      '15% lighter than its predecessor. Nova designers carved away non-essential foam beneath the arch, connecting the heel and forefoot with a continuous ZoomX bottom for seamless transition through the 42.195-kilometer distance.',
-    knowHowDescription2:
-      'The upper is crafted from Atomknit 3.0, an ultralight spun yarn offering directional containment, zero water retention, and featherweight lockdown over marathon distances.',
+    subtitle: 'Marathon World-Record Engineering',
+    introText: 'Ultra-light marathon racing weapon with dual Air Zoom pods and full-length carbon Flyplate.',
+    highlightTitle: 'CONTINUOUS CARBON FLYPLATE',
+    highlightDescription: 'Wider spoon-shaped carbon plate channeling maximum energy return through dual forefoot Zoom pods.',
+    knowHowTitle: 'ATOMKNIT 3.0 UPPER',
+    knowHowDescription: 'Hydrophobic filament yarn offering razor-thin lockdown with zero water absorption over 42.2 km.',
     interactionType: 'explode',
     interactionLabel: 'Rotate & Explode Sole',
-    interactionInstruction: 'Click or hold to disintegrate the carbon Flyplate, Zoom Air pods, and ZoomX chassis with laser telemetry.',
+    interactionInstruction: 'Click or hold to trigger hypersonic launch velocity.',
     productName: 'Nova Alphafly 3',
     realImageUrl: '/images/shoes/alphafly-3.png',
     priceINR: 22795,
@@ -352,13 +334,12 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     accentColor: '#e11d48',
     fogColor: '#fecdd3',
     pastelBg: '#ffe4e6',
-    bgContrastColor: '#ffe4e6', // High-Contrast Sunset Rose
+    bgContrastColor: '#ffe4e6',
     themeColor: '#be123c',
   },
 
   // ==========================================
   // UNIVERSE 04: MERCURIAL SUPERFLY 10 (PITCH SPEED)
-  // High-Contrast Ice Cyan Stadium & Blueprint
   // ==========================================
   {
     id: 'mercurial-superfly',
@@ -367,20 +348,15 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     sceneRoom: 'CTRL_ROOM_04_Tunnel',
     title: 'MERCURIAL SUPERFLY 10',
     category: 'EXPLOSIVE FOOTBALL SPEED',
-    subtitle: 'Mercurial Superfly 10 : The Art of Football Metamorphosis',
-    introText:
-      'Speed on the pitch is an alchemy of traction, sensation, and instantaneous acceleration. The Mercurial Superfly 10 integrates a 3/4-length articulated Air Zoom unit with sticky Gripknit for surgical ball control at top speed.',
-    highlightTitle: '3/4 ARTICULATED AIR ZOOM + GRIPKNIT',
-    highlightDescription:
-      'Sitting directly inside the chassis, the football-specific 3/4 Air Zoom unit features flex grooves that bend with every sprint. Gripknit micro-textured yarns coat the striking zone, delivering unmatched feel in wet and dry conditions.',
-    knowHowTitle: 'TRI-STAR TRACTION TELEMETRY',
-    knowHowDescription:
-      'Engineered with computational finite-element analysis, the Tri-Star stud configuration works synergistically with the Zoom plate to dig into firm ground, providing multidirectional braking and instant torque release.',
-    knowHowDescription2:
-      'The Dynamic Fit collar wraps the ankle in seamless Flyknit yarn, eliminating internal foot slippage while maintaining a weight under 200 grams.',
+    subtitle: 'Explosive On-Pitch Football Speed',
+    introText: '3/4-length articulated Air Zoom football unit with sticky Gripknit for surgical ball control.',
+    highlightTitle: '3/4 AIR ZOOM + GRIPKNIT',
+    highlightDescription: 'Segmented pitch-specific Zoom plate paired with micro-textured Gripknit upper for instant acceleration.',
+    knowHowTitle: 'TRI-STAR TRACTION',
+    knowHowDescription: 'Chevron stud geometry delivering multidirectional bite and lightning-fast cuts on firm ground.',
     interactionType: 'draw',
     interactionLabel: 'Draw Speed Vector',
-    interactionInstruction: 'Trace a diagonal cut across the screen to activate hypersonic sprint lines and audio whoosh.',
+    interactionInstruction: 'Trace or click to engage stadium floodlights and pitch mode.',
     productName: 'Nova Mercurial Superfly 10 Elite',
     realImageUrl: '/images/shoes/mercurial-superfly.png',
     priceINR: 24995,
@@ -449,13 +425,12 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     accentColor: '#0284c7',
     fogColor: '#bae6fd',
     pastelBg: '#e0f2fe',
-    bgContrastColor: '#e0f2fe', // High-Contrast Electric Cyan
+    bgContrastColor: '#e0f2fe',
     themeColor: '#0369a1',
   },
 
   // ==========================================
   // UNIVERSE 05: LEBRON XXI / SABRINA 2 (COURT ALCHEMY)
-  // High-Contrast Royal Champagne & Nacre Gold
   // ==========================================
   {
     id: 'court-alchemy',
@@ -464,20 +439,15 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     sceneRoom: 'CTRL_ROOM_05_Tunnel',
     title: 'LEBRON XXI & SABRINA 2',
     category: 'COURT ALCHEMY & HIGH-TENSION',
-    subtitle: 'Court Alchemy : Sculptural Lockdown and Low-Profile Propulsion',
-    introText:
-      'Inspired by the natural architecture of an oyster shell protecting a precious pearl, the LeBron XXI and Sabrina 2 bring high-tension 360-degree containment cables together with top-loaded Zoom Turbo cushioning.',
-    highlightTitle: '360° ZONAL CABLES + ZOOM TURBO',
-    highlightDescription:
-      'A dense matrix of high-tensile cables surrounds the foot 360 degrees, anchored to a rigid carbon midfoot shank. When driving toward the basket, the cabling contracts to eliminate rollover while Zoom Turbo delivers instantaneous response.',
-    knowHowTitle: 'PEARLESCENT FINISH & SCULPTURAL MOLDING',
-    knowHowDescription:
-      'Crafted with lustrous dimensional textiles inspired by the nacre of marine pearls. The sculpted foam casing incorporates micro-perforations for heat management and an embroidered swoosh with metallic threading.',
-    knowHowDescription2:
-      'Paired with low-profile Cushlon 3.0 foam for unmatched court feel and court-mapped herringbone traction for razor-sharp stops.',
+    subtitle: "King's Court Explosive Power & Air",
+    introText: 'Low-profile court powerhouse designed for explosive force, impact defense, and 360° containment.',
+    highlightTitle: '360° CABLE LOCKDOWN + ZOOM TURBO',
+    highlightDescription: 'High-tensile Flywire cabling anchored to a rigid carbon shank with curved forefoot Zoom Turbo.',
+    knowHowTitle: 'PEARLESCENT SHIELD',
+    knowHowDescription: 'Layered dimensional shell inspired by marine nacre, providing elite lateral defense and stability.',
     interactionType: 'hold',
     interactionLabel: 'Hold to Activate Tension',
-    interactionInstruction: 'Click and hold to tighten the 360° zonal cables with high-voltage glowing arcs and acoustic chime.',
+    interactionInstruction: 'Click and hold to tighten the 360° zonal cables.',
     productName: 'Nova LeBron XXI',
     realImageUrl: '/images/shoes/court-alchemy.png',
     priceINR: 19995,
@@ -551,13 +521,12 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     accentColor: '#ca8a04',
     fogColor: '#fde68a',
     pastelBg: '#fef3c7',
-    bgContrastColor: '#fef3c7', // High-Contrast Royal Champagne
+    bgContrastColor: '#fef3c7',
     themeColor: '#a16207',
   },
 
   // ==========================================
   // UNIVERSE 06: THE ICONS (HERITAGE EVOLUTION)
-  // High-Contrast Warm Terracotta Cream & Amber
   // ==========================================
   {
     id: 'icons-heritage',
@@ -566,20 +535,15 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     sceneRoom: 'CTRL_ROOM_06_Tunnel',
     title: 'THE ICONS',
     category: 'ARCHITECTURAL PILLARS REBORN',
-    subtitle: 'Air Force 1, Dunk Low, Air Max 1 : The Endless Metamorphosis',
-    introText:
-      'True design icons never stand still. The architectural pillars of Nova—from Bruce Kilgore’s 1982 Air Force 1 to Tinker Hatfield’s 1987 visible Air Max 1 and Peter Moore’s Dunk—continue their modern metamorphosis using sustainable luxury materials.',
-    highlightTitle: 'NEXT NATURE & ARCHIVAL CRAFTSMANSHIP',
-    highlightDescription:
-      'Reconstructed with premium full-grain leathers, recycled Nova Grind accents, and refined stitch-by-stitch tolerances. The timeless proportions remain pure, while interior comfort is upgraded with modern Ortholite and concealed encapsulated Air units.',
-    knowHowTitle: 'CULTURAL ANCHOR & ENDLESS INFLUENCE',
-    knowHowDescription:
-      'Transcendence across sports, hip-hop, skate culture, and high fashion. Each icon has spent decades evolving its material palette without ever compromising the definitive geometry that made it legendary.',
-    knowHowDescription2:
-      'From court to runway, the clean perforations, cupsole stitching, and iconic pivot circles represent the most recognized footwear silhouettes on Earth.',
+    subtitle: 'Timeless Hardwood & Street Legacy',
+    introText: 'The undisputed monument of style crafted with full-grain leather and encapsulated Air cushioning.',
+    highlightTitle: 'FULL-GRAIN LEATHER + ENCAPSULATED AIR',
+    highlightDescription: 'Stitched perimeter cupsole with hidden full-length Air capsule for durable all-day comfort.',
+    knowHowTitle: 'HERITAGE PIVOT TREAD',
+    knowHowDescription: 'Authentic 1982 hardwood pivot-circle outsole engineered with sustainable Nova Grind flecks.',
     interactionType: 'timeline',
     interactionLabel: 'Hold to Explore Timeline',
-    interactionInstruction: 'Click or hold to traverse 40+ years of iconic silhouette transformations with sonic timeline warp.',
+    interactionInstruction: 'Click or hold to explore four decades of archive legacy.',
     productName: 'Nova Air Force 1 \'07 Next Nature',
     realImageUrl: '/images/shoes/icons-heritage.png',
     priceINR: 9695,
@@ -649,7 +613,7 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     accentColor: '#d97706',
     fogColor: '#fed7aa',
     pastelBg: '#ffedd5',
-    bgContrastColor: '#ffedd5', // High-Contrast Warm Terracotta Cream
+    bgContrastColor: '#ffedd5',
     themeColor: '#b45309',
   },
 ];
@@ -658,107 +622,106 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
 export const CONTRAST_ROOM_PALETTES = [
   {
     index: 0,
+    name: 'Intro Porcelain Sky',
     bg: '#f4f3ee',
     fog: '#e8e6dc',
-    accent: '#0284c7',
     textHeading: '#0f172a',
+    textMuted: '#334155',
     textAccent: '#0284c7',
-    textMuted: '#475569',
     badgeBg: 'rgba(255, 255, 255, 0.95)',
-    badgeBorder: 'rgba(15, 23, 42, 0.12)',
+    badgeBorder: 'rgba(15, 23, 42, 0.15)',
     buttonBg: '#0f172a',
     buttonText: '#ffffff',
-  }, // Room 00: Champagne Alabaster
+  },
   {
     index: 1,
+    name: 'Air Max Dn Electric Sky',
     bg: '#dbeafe',
     fog: '#bfdbfe',
-    accent: '#0284c7',
     textHeading: '#1e3a8a',
-    textAccent: '#0284c7',
     textMuted: '#1e40af',
+    textAccent: '#1d4ed8',
     badgeBg: 'rgba(255, 255, 255, 0.95)',
     badgeBorder: 'rgba(30, 58, 138, 0.2)',
     buttonBg: '#1e3a8a',
     buttonText: '#ffffff',
-  }, // Room 01: Sky Twilight / Deep Royal
+  },
   {
     index: 2,
+    name: 'Pegasus 41 Electric Volt Sage',
     bg: '#dcfce7',
     fog: '#bbf7d0',
-    accent: '#65a30d',
     textHeading: '#14532d',
-    textAccent: '#16a34a',
     textMuted: '#166534',
+    textAccent: '#15803d',
     badgeBg: 'rgba(255, 255, 255, 0.95)',
     badgeBorder: 'rgba(20, 83, 45, 0.2)',
     buttonBg: '#14532d',
     buttonText: '#ffffff',
-  }, // Room 02: Volt Sage / Forest Pine
+  },
   {
     index: 3,
+    name: 'Alphafly 3 Sunset Crimson Rose',
     bg: '#ffe4e6',
     fog: '#fecdd3',
-    accent: '#e11d48',
     textHeading: '#881337',
-    textAccent: '#e11d48',
     textMuted: '#9f1239',
+    textAccent: '#be123c',
     badgeBg: 'rgba(255, 255, 255, 0.95)',
     badgeBorder: 'rgba(136, 19, 55, 0.2)',
     buttonBg: '#881337',
     buttonText: '#ffffff',
-  }, // Room 03: Sunset Rose / Deep Crimson
+  },
   {
     index: 4,
+    name: 'Mercurial Superfly Ice Cyan',
     bg: '#e0f2fe',
     fog: '#bae6fd',
-    accent: '#0284c7',
     textHeading: '#0c4a6e',
-    textAccent: '#0284c7',
     textMuted: '#0369a1',
+    textAccent: '#0284c7',
     badgeBg: 'rgba(255, 255, 255, 0.95)',
     badgeBorder: 'rgba(12, 74, 110, 0.2)',
     buttonBg: '#0c4a6e',
     buttonText: '#ffffff',
-  }, // Room 04: Stadium Cyan / Ocean Navy
+  },
   {
     index: 5,
+    name: 'LeBron XXI Royal Champagne',
     bg: '#fef3c7',
     fog: '#fde68a',
-    accent: '#ca8a04',
     textHeading: '#78350f',
-    textAccent: '#ca8a04',
     textMuted: '#92400e',
+    textAccent: '#b45309',
     badgeBg: 'rgba(255, 255, 255, 0.95)',
     badgeBorder: 'rgba(120, 53, 15, 0.2)',
     buttonBg: '#78350f',
     buttonText: '#ffffff',
-  }, // Room 05: Royal Champagne / Deep Amber
+  },
   {
     index: 6,
+    name: 'The Icons Terracotta Cream',
     bg: '#ffedd5',
     fog: '#fed7aa',
-    accent: '#d97706',
     textHeading: '#7c2d12',
-    textAccent: '#ea580c',
     textMuted: '#9a3412',
+    textAccent: '#c2410c',
     badgeBg: 'rgba(255, 255, 255, 0.95)',
     badgeBorder: 'rgba(124, 45, 18, 0.2)',
     buttonBg: '#7c2d12',
     buttonText: '#ffffff',
-  }, // Room 06: Vintage Terracotta / Russet Umber
+  },
   {
     index: 7,
+    name: 'Outro Platinum Alabaster',
     bg: '#f8fafc',
-    fog: '#f1f5f9',
-    accent: '#0284c7',
+    fog: '#e2e8f0',
     textHeading: '#0f172a',
-    textAccent: '#0284c7',
     textMuted: '#334155',
+    textAccent: '#0284c7',
     badgeBg: 'rgba(255, 255, 255, 0.95)',
-    badgeBorder: 'rgba(15, 23, 42, 0.12)',
+    badgeBorder: 'rgba(15, 23, 42, 0.15)',
     buttonBg: '#0f172a',
     buttonText: '#ffffff',
-  }, // Room 07: Pure Porcelain / Jet Slate
+  },
 ];
-
