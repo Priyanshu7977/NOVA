@@ -236,6 +236,64 @@ class NikeAudioEngine {
     } catch (_) {}
   }
 
+  // Football Kick Impact Thud & Whip
+  public playKickImpact() {
+    if (!this.ctx || this.isMuted) return;
+    try {
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(220, now);
+      osc.frequency.exponentialRampToValueAtTime(40, now + 0.35);
+
+      gain.gain.setValueAtTime(0.4, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.4);
+
+      // Snap transient
+      const snap = this.ctx.createOscillator();
+      const snapGain = this.ctx.createGain();
+      snap.type = 'triangle';
+      snap.frequency.setValueAtTime(900, now);
+      snap.frequency.exponentialRampToValueAtTime(100, now + 0.08);
+      snapGain.gain.setValueAtTime(0.3, now);
+      snapGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+      snap.connect(snapGain);
+      snapGain.connect(this.ctx.destination);
+      snap.start(now);
+      snap.stop(now + 0.12);
+    } catch (_) {}
+  }
+
+  // GOAL Explosion & Sonic Blast
+  public playGoalExplosion() {
+    if (!this.ctx || this.isMuted) return;
+    try {
+      this.playSonicBlast();
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.4);
+
+      gain.gain.setValueAtTime(0.15, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.65);
+    } catch (_) {}
+  }
+
   // Subtle UI Click Sound
   public playClick() {
     this.playChime(750, 'sine', 0.06);
