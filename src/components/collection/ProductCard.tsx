@@ -46,7 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
 
-      {/* 2. Large Centered Nike-Style Product Visualization */}
+      {/* 2. Large Centered Nova-Style Product Visualization */}
       <div className="my-6 py-4 flex items-center justify-center relative overflow-hidden">
         <div
           className={`w-full max-w-[280px] aspect-[16/10] transition-all duration-500 ease-out flex items-center justify-center relative z-10 ${

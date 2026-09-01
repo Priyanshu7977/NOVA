@@ -74,7 +74,7 @@ export const ExperienceCanvas: React.FC = () => {
         {/* Storyboard-driven Studio Lighting System */}
         <LightingSystem />
 
-        {/* Hero 3D Nike Sneaker in Performance Green with Exploded View */}
+        {/* Hero 3D Nova Sneaker in Performance Green with Exploded View */}
         <SneakerModel
           explodeProgress={explodeProgress}
           energyActive={energyActive}

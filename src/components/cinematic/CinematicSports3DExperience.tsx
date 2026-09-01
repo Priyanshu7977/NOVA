@@ -14,7 +14,7 @@ interface CinematicSports3DProps {
 }
 
 // =============================================================================
-// 1. SCENE 1: 3D FOOTBALL KICK (Nike Mercurial Boot + 3D Ball Physics)
+// 1. SCENE 1: 3D FOOTBALL KICK (Nova Mercurial Boot + 3D Ball Physics)
 // =============================================================================
 const FootballKick3D: React.FC<{ progress: number }> = ({ progress }) => {
   const ballGroupRef = useRef<THREE.Group>(null);
@@ -48,7 +48,7 @@ const FootballKick3D: React.FC<{ progress: number }> = ({ progress }) => {
       }
     }
 
-    // 3D Nike Mercurial Boot Movement
+    // 3D Nova Mercurial Boot Movement
     if (bootGroupRef.current) {
       if (s1 < 0.2) {
         bootGroupRef.current.position.set(-8, 3, 2);
@@ -112,7 +112,7 @@ const FootballKick3D: React.FC<{ progress: number }> = ({ progress }) => {
         </mesh>
       </group>
 
-      {/* 3D Nike Mercurial Football Boot + Striker Leg */}
+      {/* 3D Nova Mercurial Football Boot + Striker Leg */}
       <group ref={bootGroupRef} scale={[1.4, 1.4, 1.4]}>
         {/* Striker Muscular Leg / Calf in Dark Athletic Sock */}
         <mesh position={[-0.6, 2.0, 0]} rotation={[0, 0, -0.3]}>
@@ -120,7 +120,7 @@ const FootballKick3D: React.FC<{ progress: number }> = ({ progress }) => {
           <meshStandardMaterial color="#0F172A" roughness={0.6} />
         </mesh>
 
-        {/* Nike Mercurial Boot Main Body (Glacier Blue & Electric Volt) */}
+        {/* Nova Mercurial Boot Main Body (Glacier Blue & Electric Volt) */}
         <mesh position={[0, 0, 0]} rotation={[0, 0, -0.1]} castShadow>
           <boxGeometry args={[2.8, 0.9, 1.1]} />
           <meshStandardMaterial
@@ -156,7 +156,7 @@ const FootballKick3D: React.FC<{ progress: number }> = ({ progress }) => {
           <meshStandardMaterial color="#22C55E" />
         </mesh>
 
-        {/* Volt Electric Nike Swoosh */}
+        {/* Volt Electric Nova Swoosh */}
         <mesh position={[0.2, 0.1, 0.58]} rotation={[0, 0, 0.2]}>
           <boxGeometry args={[1.6, 0.3, 0.05]} />
           <meshStandardMaterial color="#22C55E" emissive="#22C55E" emissiveIntensity={1.5} />
@@ -173,7 +173,7 @@ const FootballKick3D: React.FC<{ progress: number }> = ({ progress }) => {
 };
 
 // =============================================================================
-// 2. SCENE 2: 3D BADMINTON GIRL JUMP SMASH (Nike Court Vapor Pro 2)
+// 2. SCENE 2: 3D BADMINTON GIRL JUMP SMASH (Nova Court Vapor Pro 2)
 // =============================================================================
 const BadmintonJumpSmash3D: React.FC<{ progress: number }> = ({ progress }) => {
   const girlGroupRef = useRef<THREE.Group>(null);
@@ -267,7 +267,7 @@ const BadmintonJumpSmash3D: React.FC<{ progress: number }> = ({ progress }) => {
           <meshStandardMaterial color="#1E293B" />
         </mesh>
 
-        {/* 3D Nike Court Air Zoom Vapor Pro 2 Shoes on Feet */}
+        {/* 3D Nova Court Air Zoom Vapor Pro 2 Shoes on Feet */}
         {/* Right Shoe */}
         <group position={[0.7, -0.6, 0.6]} rotation={[0.3, 0.2, 0]}>
           <mesh castShadow>
@@ -332,7 +332,7 @@ const BadmintonJumpSmash3D: React.FC<{ progress: number }> = ({ progress }) => {
 };
 
 // =============================================================================
-// 3. SCENE 3: 3D MALE RUNNER IN NIKE ALPHAFLY 3 (Kinematic Stride)
+// 3. SCENE 3: 3D MALE RUNNER IN NOVA ALPHAFLY 3 (Kinematic Stride)
 // =============================================================================
 const KineticRunner3D: React.FC<{ progress: number }> = ({ progress }) => {
   const runnerGroupRef = useRef<THREE.Group>(null);
@@ -393,7 +393,7 @@ const KineticRunner3D: React.FC<{ progress: number }> = ({ progress }) => {
         </mesh>
       </group>
 
-      {/* 3D Male Runner in Nike Alphafly 3 */}
+      {/* 3D Male Runner in Nova Alphafly 3 */}
       <group ref={runnerGroupRef} scale={[1.3, 1.3, 1.3]}>
         {/* Torso & Athletic Singlet (Forward sprint lean) */}
         <mesh position={[0, 1.5, 0]} rotation={[0.2, 0, 0]} castShadow>
@@ -407,14 +407,14 @@ const KineticRunner3D: React.FC<{ progress: number }> = ({ progress }) => {
           <meshStandardMaterial color="#F1F5F9" roughness={0.5} />
         </mesh>
 
-        {/* Right Leg & Hero Nike Alphafly 3 */}
+        {/* Right Leg & Hero Nova Alphafly 3 */}
         <group ref={rightLegRef} position={[0.35, 0.8, 0]}>
           <mesh position={[0, -0.6, 0]} castShadow>
             <cylinderGeometry args={[0.22, 0.18, 1.4, 12]} />
             <meshStandardMaterial color="#1E293B" />
           </mesh>
 
-          {/* 3D Nike Alphafly 3 (Electric Volt + Dual Zoom Air + ZoomX Cushion) */}
+          {/* 3D Nova Alphafly 3 (Electric Volt + Dual Zoom Air + ZoomX Cushion) */}
           <group position={[0, -1.4, 0.2]} rotation={[-0.1, 0, 0]}>
             {/* Volt Upper */}
             <mesh castShadow>
@@ -443,7 +443,7 @@ const KineticRunner3D: React.FC<{ progress: number }> = ({ progress }) => {
           </group>
         </group>
 
-        {/* Left Leg & Nike Alphafly 3 */}
+        {/* Left Leg & Nova Alphafly 3 */}
         <group ref={leftLegRef} position={[-0.35, 0.8, 0]}>
           <mesh position={[0, -0.6, 0]} castShadow>
             <cylinderGeometry args={[0.22, 0.18, 1.4, 12]} />
@@ -514,7 +514,7 @@ const HeroProductReveal3D: React.FC<{ progress: number }> = ({ progress }) => {
     <group name="SCENE_04_HERO_ORBIT" position={[0, 0.5, 0]} scale={[s4 * 1.6, s4 * 1.6, s4 * 1.6]}>
       <Float speed={2} rotationIntensity={0.5} floatIntensity={0.8}>
         <group ref={shoeGroupRef}>
-          {/* 3D Nike Alphafly 3 Hero Mesh */}
+          {/* 3D Nova Alphafly 3 Hero Mesh */}
           <mesh castShadow receiveShadow>
             <boxGeometry args={[2.8, 0.9, 1.1]} />
             <meshStandardMaterial
@@ -585,7 +585,7 @@ export const CinematicSports3DExperience: React.FC<CinematicSports3DProps> = ({ 
         {/* Scene 2: 3D Badminton Girl Jump Smash */}
         <BadmintonJumpSmash3D progress={scrollProgress} />
 
-        {/* Scene 3: 3D Male Runner in Nike Alphafly 3 */}
+        {/* Scene 3: 3D Male Runner in Nova Alphafly 3 */}
         <KineticRunner3D progress={scrollProgress} />
 
         {/* Scene 4: 3D Hero Product 360° Orbit */}
@@ -630,7 +630,7 @@ export const CinematicSports3DExperience: React.FC<CinematicSports3DProps> = ({ 
           EXPLOSIVE SMASH
         </h2>
         <p className="text-xs font-mono text-[#6B6B6B] max-w-md mt-1">
-          Nike Court Air Zoom Vapor Pro 2 // Hard Court Friction Control
+          Nova Court Air Zoom Vapor Pro 2 // Hard Court Friction Control
         </p>
       </div>
 
@@ -643,7 +643,7 @@ export const CinematicSports3DExperience: React.FC<CinematicSports3DProps> = ({ 
         }`}
       >
         <span className="px-3 py-1 rounded-full bg-emerald-50 text-[10px] sm:text-xs font-mono font-bold tracking-mega text-emerald-700 uppercase mb-1 border border-emerald-200">
-          3D SCENE 03 // GUY RUNNING IN NIKE ALPHAFLY 3
+          3D SCENE 03 // GUY RUNNING IN NOVA ALPHAFLY 3
         </span>
         <h2 className="text-4xl sm:text-7xl font-black tracking-tight text-[#111111] uppercase">
           MARATHON STRIDE
@@ -698,7 +698,7 @@ export const CinematicSports3DExperience: React.FC<CinematicSports3DProps> = ({ 
 
               <div className="pt-8 border-t border-[#F0F0ED] space-y-3">
                 <div className="flex justify-between items-baseline font-mono">
-                  <span className="text-xs text-[#6B6B6B]">NIKE INDIA MRP</span>
+                  <span className="text-xs text-[#6B6B6B]">NOVA INDIA MRP</span>
                   <span className="text-base font-bold text-[#111111]">
                     ₹{prod.price.toLocaleString('en-IN')}
                   </span>

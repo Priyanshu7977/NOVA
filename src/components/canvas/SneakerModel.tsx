@@ -45,7 +45,7 @@ const RealNikeSneakerInner: React.FC<SneakerModelProps> = ({
     switch (config.upperColor) {
       case 'green':
       case 'volt':
-        return '#16a34a'; // Vibrant Nike Green
+        return '#16a34a'; // Vibrant Nova Green
       case 'midnight':
         return '#111827';
       case 'graphite':

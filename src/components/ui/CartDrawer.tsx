@@ -174,7 +174,7 @@ export const CartDrawer: React.FC = () => {
               {/* Delivery Banner */}
               <div className="flex items-center space-x-2 text-[11px] font-mono text-emerald-800 bg-emerald-50 px-3.5 py-2.5 rounded-xl border border-emerald-200 font-bold">
                 <Truck size={15} className="text-emerald-700" />
-                <span>FREE NIKE EXPRESS DELIVERY UNLOCKED</span>
+                <span>FREE NOVA EXPRESS DELIVERY UNLOCKED</span>
               </div>
 
               {/* Subtotal Calculation */}

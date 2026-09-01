@@ -66,7 +66,7 @@ export const CinematicSportsFilm: React.FC<CinematicSportsFilmProps> = ({ scroll
       />
 
       {/* ==================================================== */}
-      {/* SCENE 1 — OPENING / SUSPENDED BALL & NIKE KICK      */}
+      {/* SCENE 1 — OPENING / SUSPENDED BALL & NOVA KICK      */}
       {/* ==================================================== */}
       <div
         className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
@@ -124,7 +124,7 @@ export const CinematicSportsFilm: React.FC<CinematicSportsFilmProps> = ({ scroll
           />
         </div>
 
-        {/* Incoming Nike Mercurial Football Boot */}
+        {/* Incoming Nova Mercurial Football Boot */}
         <div
           className="absolute z-30 pointer-events-none"
           style={{
@@ -179,7 +179,7 @@ export const CinematicSportsFilm: React.FC<CinematicSportsFilmProps> = ({ scroll
             EXPLOSIVE CUTS
           </h2>
           <p className="text-xs font-mono text-[#6B6B6B] max-w-md mx-auto mt-2">
-            Instantaneous directional change with Nike Court Air Zoom Vapor Pro 2 lateral stabilization.
+            Instantaneous directional change with Nova Court Air Zoom Vapor Pro 2 lateral stabilization.
           </p>
         </div>
 
@@ -199,7 +199,7 @@ export const CinematicSportsFilm: React.FC<CinematicSportsFilmProps> = ({ scroll
           <div className="mt-4 px-4 py-2 rounded-full bg-white/90 border border-black/10 shadow-sm backdrop-blur-md flex items-center space-x-3">
             <Shield size={14} className="text-blue-600" />
             <span className="text-xs font-mono font-bold text-[#111111]">
-              NIKE COURT AIR ZOOM VAPOR PRO 2 // ₹10,795
+              NOVA COURT AIR ZOOM VAPOR PRO 2 // ₹10,795
             </span>
           </div>
         </div>
@@ -257,7 +257,7 @@ export const CinematicSportsFilm: React.FC<CinematicSportsFilmProps> = ({ scroll
             CONTINUOUS DRIVE
           </h2>
           <p className="text-xs font-mono text-[#6B6B6B] max-w-md mx-auto mt-2">
-            Nike Alphafly 3 dual Zoom Air pods and S-curved Flyplate carbon dynamics.
+            Nova Alphafly 3 dual Zoom Air pods and S-curved Flyplate carbon dynamics.
           </p>
         </div>
 

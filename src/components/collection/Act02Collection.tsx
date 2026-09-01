@@ -83,7 +83,7 @@ export const Act02Collection: React.FC = () => {
       <div className="w-full max-w-7xl mx-auto px-6 mt-8">
         {filteredProducts.length === 0 ? (
           <div className="text-center py-24 bg-white rounded-3xl border border-[#E5E5E2] font-mono text-sm text-[#6B6B6B] space-y-3">
-            <p>No Nike footwear matched your search "{searchQuery}".</p>
+            <p>No Nova footwear matched your search "{searchQuery}".</p>
             <button
               onClick={() => {
                 setSearchQuery('');

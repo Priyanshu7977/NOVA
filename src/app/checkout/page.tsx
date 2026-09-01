@@ -34,7 +34,7 @@ export default function CheckoutPage() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [firstName, setFirstName] = useState('Priyanshu');
   const [lastName, setLastName] = useState('Singh');
-  const [email, setEmail] = useState('priyanshu@nike.in');
+  const [email, setEmail] = useState('priyanshu@nova.in');
   const [phone, setPhone] = useState('9876543210');
   const [address, setAddress] = useState('402, Horizon Towers, Linking Road');
   const [locality, setLocality] = useState('Bandra West');
@@ -61,7 +61,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-[#111111] font-sans antialiased">
-      {/* Official Nike Header */}
+      {/* Official Nova Header */}
       <header className="bg-white border-b border-gray-200 px-6 sm:px-12 py-4 sticky top-0 z-30 flex items-center justify-between">
         <div className="flex items-center space-x-6">
           <Link href="/" className="hover:opacity-80 transition-opacity">
@@ -71,7 +71,7 @@ export default function CheckoutPage() {
           </Link>
           <div className="border-l border-gray-200 pl-6 hidden sm:block">
             <span className="font-display text-xl font-black uppercase block tracking-tight">
-              OFFICIAL NIKE.IN CHECKOUT
+              OFFICIAL NOVA CHECKOUT
             </span>
             <span className="text-[10px] font-mono text-gray-500 font-semibold">
               100% ENCRYPTED & VERIFIED GATEWAY
@@ -363,7 +363,7 @@ export default function CheckoutPage() {
                 onClick={() => clearCart()}
                 className="inline-block px-8 py-4 rounded-2xl bg-[#111111] text-white font-sans font-bold text-xs tracking-widest uppercase shadow-lg hover:bg-black transition-all"
               >
-                RETURN TO NIKE SHOWCASE
+                RETURN TO NOVA SHOWCASE
               </Link>
             </div>
           )}

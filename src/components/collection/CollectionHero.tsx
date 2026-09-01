@@ -50,16 +50,16 @@ export const CollectionHero: React.FC<CollectionHeroProps> = ({
       <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-8">
         <div className="space-y-3 max-w-2xl">
           <span className="text-[11px] font-mono tracking-mega text-emerald-700 font-bold uppercase block">
-            SCENE 05 // THE NIKE FOOTWEAR SHOP
+            SCENE 05 // THE NOVA FOOTWEAR SHOP
           </span>
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter text-[#111111] uppercase leading-[0.92]">
-            NIKE FOOTWEAR <br />
+            NOVA FOOTWEAR <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111111] via-emerald-700 to-[#111111]">
               CURATED BY NOVA.
             </span>
           </h2>
           <p className="text-sm font-mono text-[#6B6B6B] leading-relaxed max-w-xl pt-1">
-            Performance & lifestyle footwear curated from official Nike specifications. Engineered for velocity, power, friction and everyday athletic agility.
+            Performance & lifestyle footwear curated from official Nova specifications. Engineered for velocity, power, friction and everyday athletic agility.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export const CollectionHero: React.FC<CollectionHeroProps> = ({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search Nike footwear..."
+            placeholder="Search Nova footwear..."
             className="w-full pl-11 pr-4 py-3 bg-white border border-[#E5E5E2] focus:border-[#111111] rounded-2xl text-xs font-mono text-[#111111] placeholder:text-[#A1A1AA] focus:outline-none shadow-sm transition-all"
           />
         </div>

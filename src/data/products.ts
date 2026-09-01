@@ -25,7 +25,7 @@ export interface Product {
   id: string;
   number: string;
   name: string;
-  brand: 'Nike';
+  brand: 'Nova';
   tagline: string;
   price: number; // in INR
   category: 'RUNNING' | 'BASKETBALL' | 'FOOTBALL' | 'TRAINING' | 'LIFESTYLE' | 'TENNIS';
@@ -33,7 +33,7 @@ export interface Product {
   gender: "Men's" | "Women's" | 'Unisex';
   sizes: string[];
   image: string;
-  productUrl: string; // official Nike India link
+  productUrl: string; // official Nova India link
   badge?: string;
   reviewsCount: number;
   rating: number;
@@ -53,13 +53,13 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
   // ==========================================
-  // 1. SCENE 3 FEATURED: NIKE ALPHAFLY 3
+  // 1. SCENE 3 FEATURED: NOVA ALPHAFLY 3
   // ==========================================
   {
     id: 'nike-alphafly-3',
     number: '01',
-    name: 'Nike Alphafly 3',
-    brand: 'Nike',
+    name: 'Nova Alphafly 3',
+    brand: 'Nova',
     tagline: 'Marathon Velocity System',
     price: 22795,
     category: 'RUNNING',
@@ -67,7 +67,7 @@ export const PRODUCTS: Product[] = [
     gender: 'Unisex',
     sizes: ['UK 6', 'UK 6.5', 'UK 7', 'UK 7.5', 'UK 8', 'UK 8.5', 'UK 9', 'UK 9.5', 'UK 10', 'UK 10.5', 'UK 11', 'UK 12'],
     image: '/models/nike-alphafly-3.png',
-    productUrl: 'https://www.nike.in/w/running-shoes-37v7jzy7ok',
+    productUrl: 'https://nova-x.com/w/running-shoes-37v7jzy7ok',
     badge: 'SCENE 03 HERO',
     reviewsCount: 428,
     rating: 5.0,
@@ -123,13 +123,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 2. SCENE 1 FEATURED: NIKE MERCURIAL SUPERFLY 10 ELITE
+  // 2. SCENE 1 FEATURED: NOVA MERCURIAL SUPERFLY 10 ELITE
   // ==========================================
   {
     id: 'nike-mercurial-superfly-10',
     number: '02',
-    name: 'Nike Mercurial Superfly 10 Elite',
-    brand: 'Nike',
+    name: 'Nova Mercurial Superfly 10 Elite',
+    brand: 'Nova',
     tagline: 'Explosive Football Speed & Touch',
     price: 24995,
     category: 'FOOTBALL',
@@ -137,7 +137,7 @@ export const PRODUCTS: Product[] = [
     gender: "Men's",
     sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 8.5', 'UK 9', 'UK 9.5', 'UK 10', 'UK 10.5', 'UK 11'],
     image: '/models/nike-mercurial.png',
-    productUrl: 'https://www.nike.in/w/football-shoes-1gdj0zy7ok',
+    productUrl: 'https://nova-x.com/w/football-shoes-1gdj0zy7ok',
     badge: 'SCENE 01 HERO',
     reviewsCount: 312,
     rating: 5.0,
@@ -150,7 +150,7 @@ export const PRODUCTS: Product[] = [
       energyReturn: '92.1%',
       cushioning: '3/4 Air Zoom Plate',
       surface: 'Firm Ground (FG)',
-      keyTech: 'Nike Gripknit + Tri-Star Stud Trajectory',
+      keyTech: 'Nova Gripknit + Tri-Star Stud Trajectory',
     },
     colorways: [
       {
@@ -184,13 +184,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 3. SCENE 2 FEATURED: NIKE COURT AIR ZOOM VAPOR PRO 2
+  // 3. SCENE 2 FEATURED: NOVA COURT AIR ZOOM VAPOR PRO 2
   // ==========================================
   {
     id: 'nike-vapor-pro-2',
     number: '03',
-    name: 'Nike Court Air Zoom Vapor Pro 2',
-    brand: 'Nike',
+    name: 'Nova Court Air Zoom Vapor Pro 2',
+    brand: 'Nova',
     tagline: 'Agile Badminton & Hard Court Friction Control',
     price: 10795,
     category: 'TENNIS',
@@ -198,7 +198,7 @@ export const PRODUCTS: Product[] = [
     gender: 'Unisex',
     sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11'],
     image: '/models/nike-vapor-pro.png',
-    productUrl: 'https://www.nike.in/w/tennis-shoes-5e1x6zy7ok',
+    productUrl: 'https://nova-x.com/w/tennis-shoes-5e1x6zy7ok',
     badge: 'SCENE 02 HERO',
     reviewsCount: 264,
     rating: 4.9,
@@ -245,13 +245,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 4. NIKE VAPORFLY 3
+  // 4. NOVA VAPORFLY 3
   // ==========================================
   {
     id: 'nike-vaporfly-3',
     number: '04',
-    name: 'Nike Vaporfly 3',
-    brand: 'Nike',
+    name: 'Nova Vaporfly 3',
+    brand: 'Nova',
     tagline: 'Leader of the Marathon Pack',
     price: 20695,
     category: 'RUNNING',
@@ -259,7 +259,7 @@ export const PRODUCTS: Product[] = [
     gender: 'Unisex',
     sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 8.5', 'UK 9', 'UK 9.5', 'UK 10', 'UK 11'],
     image: '/models/nike-vaporfly-3.png',
-    productUrl: 'https://www.nike.in/w/running-shoes-37v7jzy7ok',
+    productUrl: 'https://nova-x.com/w/running-shoes-37v7jzy7ok',
     badge: 'POPULAR',
     reviewsCount: 388,
     rating: 5.0,
@@ -305,13 +305,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 5. NIKE G.T. CUT 3
+  // 5. NOVA G.T. CUT 3
   // ==========================================
   {
     id: 'nike-gt-cut-3',
     number: '05',
-    name: 'Nike G.T. Cut 3',
-    brand: 'Nike',
+    name: 'Nova G.T. Cut 3',
+    brand: 'Nova',
     tagline: 'High-Traction Multi-Directional Separation',
     price: 17495,
     category: 'BASKETBALL',
@@ -319,7 +319,7 @@ export const PRODUCTS: Product[] = [
     gender: "Men's",
     sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11', 'UK 12'],
     image: '/models/nike-gt-cut-3.png',
-    productUrl: 'https://www.nike.in/w/basketball-shoes-3glsmzy7ok',
+    productUrl: 'https://nova-x.com/w/basketball-shoes-3glsmzy7ok',
     badge: 'NEW DROP',
     reviewsCount: 194,
     rating: 4.9,
@@ -365,13 +365,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 6. NIKE PEGASUS 41
+  // 6. NOVA PEGASUS 41
   // ==========================================
   {
     id: 'nike-pegasus-41',
     number: '06',
-    name: 'Nike Pegasus 41',
-    brand: 'Nike',
+    name: 'Nova Pegasus 41',
+    brand: 'Nova',
     tagline: 'The Reliable Workhorse With Wings',
     price: 11895,
     category: 'RUNNING',
@@ -379,7 +379,7 @@ export const PRODUCTS: Product[] = [
     gender: 'Unisex',
     sizes: ['UK 6', 'UK 6.5', 'UK 7', 'UK 7.5', 'UK 8', 'UK 8.5', 'UK 9', 'UK 10', 'UK 11', 'UK 12'],
     image: '/models/nike-pegasus-41.png',
-    productUrl: 'https://www.nike.in/w/running-shoes-37v7jzy7ok',
+    productUrl: 'https://nova-x.com/w/running-shoes-37v7jzy7ok',
     badge: 'DAILY RUNNER',
     reviewsCount: 540,
     rating: 4.9,
@@ -425,13 +425,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 7. NIKE METCON 9
+  // 7. NOVA METCON 9
   // ==========================================
   {
     id: 'nike-metcon-9',
     number: '07',
-    name: 'Nike Metcon 9',
-    brand: 'Nike',
+    name: 'Nova Metcon 9',
+    brand: 'Nova',
     tagline: 'The Gold Standard of Strength Training',
     price: 12795,
     category: 'TRAINING',
@@ -439,7 +439,7 @@ export const PRODUCTS: Product[] = [
     gender: "Men's",
     sizes: ['UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11'],
     image: '/models/nike-metcon-9.png',
-    productUrl: 'https://www.nike.in/w/training-gym-shoes-58jtozy7ok',
+    productUrl: 'https://nova-x.com/w/training-gym-shoes-58jtozy7ok',
     badge: 'GYM & LIFTING',
     reviewsCount: 220,
     rating: 4.8,
@@ -485,13 +485,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 8. NIKE DUNK LOW RETRO
+  // 8. NOVA DUNK LOW RETRO
   // ==========================================
   {
     id: 'nike-dunk-low',
     number: '08',
-    name: 'Nike Dunk Low Retro',
-    brand: 'Nike',
+    name: 'Nova Dunk Low Retro',
+    brand: 'Nova',
     tagline: 'Classic 80s Hardwood Icon',
     price: 8295,
     category: 'LIFESTYLE',
@@ -499,7 +499,7 @@ export const PRODUCTS: Product[] = [
     gender: 'Unisex',
     sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11', 'UK 12'],
     image: '/models/nike-dunk-low.png',
-    productUrl: 'https://www.nike.in/w/lifestyle-shoes-13jrmzy7ok',
+    productUrl: 'https://nova-x.com/w/lifestyle-shoes-13jrmzy7ok',
     badge: 'ICONIC',
     reviewsCount: 680,
     rating: 4.9,
@@ -545,13 +545,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 9. NIKE AIR FORCE 1 '07
+  // 9. NOVA AIR FORCE 1 '07
   // ==========================================
   {
     id: 'nike-air-force-1',
     number: '09',
-    name: "Nike Air Force 1 '07",
-    brand: 'Nike',
+    name: "Nova Air Force 1 '07",
+    brand: 'Nova',
     tagline: 'The Legend of Clean Triple White',
     price: 7495,
     category: 'LIFESTYLE',
@@ -559,17 +559,17 @@ export const PRODUCTS: Product[] = [
     gender: 'Unisex',
     sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11'],
     image: '/models/nike-air-force-1.png',
-    productUrl: 'https://www.nike.in/w/lifestyle-shoes-13jrmzy7ok',
+    productUrl: 'https://nova-x.com/w/lifestyle-shoes-13jrmzy7ok',
     badge: 'TIMELESS',
     reviewsCount: 840,
     rating: 5.0,
     description:
-      'Crisp leather edges, clean stitching, and encapsulated Nike Air cushioning that revolutionized basketball and streetwear culture worldwide.',
+      'Crisp leather edges, clean stitching, and encapsulated Nova Air cushioning that revolutionized basketball and streetwear culture worldwide.',
     specs: {
       weight: '420g (UK 9)',
       drop: '0mm (Air Cupsole)',
       energyReturn: '80.0%',
-      cushioning: 'Encapsulated Nike Air',
+      cushioning: 'Encapsulated Nova Air',
       surface: 'Street & Lifestyle',
       keyTech: 'Encapsulated Air-Sole Unit + Solid Rubber Outsole',
     },
@@ -605,13 +605,13 @@ export const PRODUCTS: Product[] = [
   },
 
   // ==========================================
-  // 10. NIKE INVINCIBLE 3
+  // 10. NOVA INVINCIBLE 3
   // ==========================================
   {
     id: 'nike-invincible-3',
     number: '10',
-    name: 'Nike Invincible 3',
-    brand: 'Nike',
+    name: 'Nova Invincible 3',
+    brand: 'Nova',
     tagline: 'Max-Cushion Long Distance Recovery',
     price: 16995,
     category: 'RUNNING',
@@ -619,7 +619,7 @@ export const PRODUCTS: Product[] = [
     gender: 'Unisex',
     sizes: ['UK 6', 'UK 7', 'UK 8', 'UK 9', 'UK 10', 'UK 11'],
     image: '/models/nike-invincible-3.png',
-    productUrl: 'https://www.nike.in/w/running-shoes-37v7jzy7ok',
+    productUrl: 'https://nova-x.com/w/running-shoes-37v7jzy7ok',
     badge: 'MAX CUSHION',
     reviewsCount: 310,
     rating: 4.9,

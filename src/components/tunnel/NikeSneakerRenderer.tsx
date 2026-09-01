@@ -212,7 +212,7 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
         </group>
       )}
 
-      {/* 3. HERO AUTHENTIC REAL 3D PHYSICAL NIKE SNEAKER MODEL */}
+      {/* 3. HERO AUTHENTIC REAL 3D PHYSICAL NOVA SNEAKER MODEL */}
       <group
         ref={shoeMeshRef}
         onClick={triggerRealisticFlip}

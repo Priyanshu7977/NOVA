@@ -62,7 +62,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
       const isMobile = width < 768;
 
       // =========================================================================
-      // SCENE 1: BALL → NIKE MERCURIAL FOOTBALL SHOE KICK (Scroll 0.00 to 0.28)
+      // SCENE 1: BALL → NOVA MERCURIAL FOOTBALL SHOE KICK (Scroll 0.00 to 0.28)
       // =========================================================================
       if (scrollProgress < 0.30) {
         const s1 = Math.min(1, scrollProgress / 0.26); // 0 to 1 within Scene 1
@@ -142,7 +142,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
 
         ctx.restore(); // restore ball translate
 
-        // 3. Nike Mercurial Football Boot (Sweeps in & Kicks)
+        // 3. Nova Mercurial Football Boot (Sweeps in & Kicks)
         if (bootEntry > 0) {
           ctx.save();
           // Boot trajectory: starts top-left/behind, accelerates into ball contact
@@ -160,7 +160,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
           const shoeScale = isMobile ? 0.65 : 1.0;
           ctx.scale(shoeScale, shoeScale);
 
-          // Draw Photorealistic Nike Mercurial Boot
+          // Draw Photorealistic Nova Mercurial Boot
           drawNikeMercurialBoot(ctx);
 
           ctx.restore();
@@ -234,7 +234,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
         ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
         ctx.fill();
 
-        // Draw Articulated Badminton Athlete with Nike Vapor Pro 2 Court Shoes
+        // Draw Articulated Badminton Athlete with Nova Vapor Pro 2 Court Shoes
         drawBadmintonAthlete(ctx, athleteX, athleteY, jumpProgress, isMobile);
 
         // Shuttlecock Motion
@@ -317,7 +317,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
 
         // Runner Camera Macro Progression:
         // 0% - 25%: Runner preparing in starting stance
-        // 25% - 60%: Low camera tracking Nike Alphafly 3 running shoe
+        // 25% - 60%: Low camera tracking Nova Alphafly 3 running shoe
         // 60% - 100%: Full dynamic sprinting stride with foam compression & arm pump
         const runnerX = isMobile ? centerX : centerX - 60;
         const runnerY = trackY + 30;
@@ -385,7 +385,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
           EXPLOSIVE LATERAL CUTS
         </h2>
         <p className="text-xs font-mono text-[#6B6B6B] max-w-md mt-1">
-          Nike Court Air Zoom Vapor Pro 2 // Lateral Outrigger Stabilizer
+          Nova Court Air Zoom Vapor Pro 2 // Lateral Outrigger Stabilizer
         </p>
       </div>
 
@@ -406,7 +406,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
           CONTINUOUS STRIDE DRIVE
         </h2>
         <p className="text-xs font-mono text-[#6B6B6B] max-w-md mt-1">
-          Nike Alphafly 3 // Dual Air Zoom Pods & Full Carbon Flyplate
+          Nova Alphafly 3 // Dual Air Zoom Pods & Full Carbon Flyplate
         </p>
       </div>
 
@@ -459,7 +459,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
               {/* Price and Action Buttons */}
               <div className="pt-8 border-t border-[#F0F0ED] space-y-3">
                 <div className="flex justify-between items-baseline font-mono">
-                  <span className="text-xs text-[#6B6B6B]">NIKE INDIA MRP</span>
+                  <span className="text-xs text-[#6B6B6B]">NOVA INDIA MRP</span>
                   <span className="text-base font-bold text-[#111111]">
                     ₹{prod.price.toLocaleString('en-IN')}
                   </span>
@@ -500,7 +500,7 @@ export const CinematicMasterCanvas: React.FC<CinematicMasterCanvasProps> = ({ sc
 };
 
 // =============================================================================
-// HELPER: Draw Detailed Nike Mercurial Superfly 10 Boot
+// HELPER: Draw Detailed Nova Mercurial Superfly 10 Boot
 // =============================================================================
 function drawNikeMercurialBoot(ctx: CanvasRenderingContext2D) {
   // Cleats Studs
@@ -550,7 +550,7 @@ function drawNikeMercurialBoot(ctx: CanvasRenderingContext2D) {
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  // Electric Volt Nike Speed Swoosh
+  // Electric Volt Nova Speed Swoosh
   ctx.fillStyle = '#22c55e';
   ctx.beginPath();
   ctx.moveTo(-60, -20);
@@ -599,7 +599,7 @@ function drawBadmintonAthlete(
   ctx.lineTo(-90 - progress * 20, 30);
   ctx.stroke();
 
-  // 2. Nike Court Vapor Pro 2 Shoes on Feet
+  // 2. Nova Court Vapor Pro 2 Shoes on Feet
   // Front Shoe
   ctx.fillStyle = '#FFFFFF';
   ctx.beginPath();
@@ -663,7 +663,7 @@ function drawBadmintonAthlete(
 }
 
 // =============================================================================
-// HELPER: Draw Kinetic Male Runner with Nike Alphafly 3 Close-up Tracking
+// HELPER: Draw Kinetic Male Runner with Nova Alphafly 3 Close-up Tracking
 // =============================================================================
 function drawKineticRunner(
   ctx: CanvasRenderingContext2D,
@@ -690,7 +690,7 @@ function drawKineticRunner(
   ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
   ctx.fill();
 
-  // 2. Back Leg & Nike Alphafly 3 Shoe
+  // 2. Back Leg & Nova Alphafly 3 Shoe
   ctx.save();
   ctx.translate(0, -90);
   ctx.rotate(leg2Angle);
@@ -727,7 +727,7 @@ function drawKineticRunner(
   ctx.arc(15, -205, 18, 0, Math.PI * 2);
   ctx.fill();
 
-  // 5. Front Leg & Nike Alphafly 3 (Hero Tracking)
+  // 5. Front Leg & Nova Alphafly 3 (Hero Tracking)
   ctx.save();
   ctx.translate(0, -90);
   ctx.rotate(leg1Angle);

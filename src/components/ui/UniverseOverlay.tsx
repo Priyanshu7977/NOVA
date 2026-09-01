@@ -83,7 +83,7 @@ export const UniverseOverlay: React.FC<UniverseOverlayProps> = ({
               className="text-xs font-mono tracking-[0.25em] uppercase font-bold transition-colors duration-500"
               style={{ color: activePalette.textHeading }}
             >
-              NIKE INNOVATION LAB
+              NOVA INNOVATION LAB
             </span>
           </div>
 

@@ -23,7 +23,7 @@ export const RealNike3DModel: React.FC<RealNike3DModelProps> = ({
 }) => {
   const modelRef = useRef<THREE.Group>(null);
 
-  // Load the authentic 3D Nike Shoe GLB
+  // Load the authentic 3D Nova Shoe GLB
   const { scene } = useGLTF('/nike_shoe.glb');
   const clonedScene = useMemo(() => scene.clone(true), [scene]);
 

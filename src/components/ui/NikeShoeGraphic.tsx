@@ -116,7 +116,7 @@ export const NikeShoeGraphic: React.FC<NikeShoeGraphicProps> = ({
               strokeWidth="1.5"
             />
 
-            {/* Nike Court Swoosh */}
+            {/* Nova Court Swoosh */}
             <path
               d="M 120,135 Q 240,145 390,165 Q 260,190 150,175 Q 110,165 80,125 Q 100,120 120,135 Z"
               fill={accent}
@@ -180,7 +180,7 @@ export const NikeShoeGraphic: React.FC<NikeShoeGraphicProps> = ({
               strokeWidth="1.5"
             />
 
-            {/* Nike Speed Swoop */}
+            {/* Nova Speed Swoop */}
             <path
               d="M 100,120 Q 220,130 380,150 Q 240,175 120,170 Q 200,145 100,120 Z"
               fill={accent}

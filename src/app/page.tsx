@@ -265,21 +265,21 @@ export default function NikeInnovationPage() {
         onTriggerInteractionEnd={handleTriggerInteractionEnd}
       />
 
-      {/* 4. Outro & Nike Member Lab Section (Room 07) */}
+      {/* 4. Outro & Nova Member Lab Section (Room 07) */}
       {currentProgress > 6.4 && (
         <OutroSection onNavigateToUniverse={navigateToUniverse} />
       )}
 
-      {/* 5. Official Nike.in Add to Cart & Size Selection Modal */}
+      {/* 5. Official Nova.in Add to Cart & Size Selection Modal */}
       <NikeAddToCartModal
         universe={selectedUniverseModal}
         onClose={() => setSelectedUniverseModal(null)}
       />
 
-      {/* 6. Nike Slide-Out Bag / Cart Drawer */}
+      {/* 6. Nova Slide-Out Bag / Cart Drawer */}
       <CartDrawer />
 
-      {/* 7. Official Nike.in Multi-Step Checkout Modal with Real Payment Gateways */}
+      {/* 7. Official Nova.in Multi-Step Checkout Modal with Real Payment Gateways */}
       <NikeCheckoutModal />
     </main>
   );

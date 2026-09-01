@@ -23,7 +23,7 @@ export const AuthenticNikeReal3D: React.FC<AuthenticNikeReal3DProps> = ({
   const groupRef = useRef<THREE.Group>(null);
   const coreRef = useRef<THREE.Group>(null);
 
-  // Load the authentic official Nike high-res real shoe texture
+  // Load the authentic official Nova high-res real shoe texture
   const texture = useLoader(THREE.TextureLoader, universe.realImageUrl);
   texture.generateMipmaps = true;
   texture.minFilter = THREE.LinearMipmapLinearFilter;

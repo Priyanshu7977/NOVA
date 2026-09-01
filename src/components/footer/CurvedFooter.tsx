@@ -128,7 +128,7 @@ export const CurvedFooter: React.FC = () => {
           <div className="p-4 rounded-2xl bg-[#F7F7F5] border border-[#E5E5E2] flex items-start space-x-3">
             <ShieldCheck size={16} className="text-emerald-700 flex-shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              <strong className="text-[#111111]">INDEPENDENT CONCEPT NOTICE:</strong> NOVA is an independent cinematic sports footwear showcase. All product trademarks, model names, and references belong to Nike Inc. This experience does not claim affiliation, partnership, sponsorship, or official authorization by Nike.
+              <strong className="text-[#111111]">INDEPENDENT CONCEPT NOTICE:</strong> NOVA is an independent cinematic sports footwear showcase. All product trademarks, model names, and references belong to Nova Inc. This experience does not claim affiliation, partnership, sponsorship, or official authorization by Nova.
             </p>
           </div>
 

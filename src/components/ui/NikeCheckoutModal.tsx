@@ -50,7 +50,7 @@ export const NikeCheckoutModal: React.FC = () => {
   // Address Form State
   const [firstName, setFirstName] = useState('Priyanshu');
   const [lastName, setLastName] = useState('Singh');
-  const [email, setEmail] = useState('priyanshu@nike.in');
+  const [email, setEmail] = useState('priyanshu@nova.in');
   const [phone, setPhone] = useState('9876543210');
   const [address, setAddress] = useState('Flat 402, High-Tech Horizon Towers');
   const [locality, setLocality] = useState('Bandra West');
@@ -84,14 +84,14 @@ export const NikeCheckoutModal: React.FC = () => {
   const finalTotal = Math.max(0, cartTotal + shippingCost - discount);
 
   const handleApplyPromo = () => {
-    if (promoCode.trim().toUpperCase() === 'NIKE2026' || promoCode.trim().toUpperCase() === 'MEMBER10') {
+    if (promoCode.trim().toUpperCase() === 'NOVA2026' || promoCode.trim().toUpperCase() === 'MEMBER10') {
       audio.playChime(880, 'sine', 0.15);
       const disc = Math.round(cartTotal * 0.1);
       setDiscount(disc);
       setPromoApplied(true);
     } else {
       audio.playChime(300, 'sawtooth', 0.1);
-      alert('Invalid promo code. Use NIKE2026 for 10% Member discount.');
+      alert('Invalid promo code. Use NOVA2026 for 10% Member discount.');
     }
   };
 
@@ -154,17 +154,17 @@ export const NikeCheckoutModal: React.FC = () => {
     >
       <div className="relative w-full max-w-5xl bg-[#ffffff] text-[#111111] rounded-[2.5rem] shadow-2xl border border-[#e5e5e5] overflow-hidden flex flex-col max-h-[95vh]">
         {/* ========================================================= */}
-        {/* 1. OFFICIAL NIKE CHECKOUT HEADER                          */}
+        {/* 1. OFFICIAL NOVA CHECKOUT HEADER                          */}
         {/* ========================================================= */}
         <header className="px-6 sm:px-10 py-4 border-b border-[#e5e5e5] flex items-center justify-between bg-[#ffffff] sticky top-0 z-30">
-          {/* Nike Swoosh Brand Logo */}
+          {/* Nova Swoosh Brand Logo */}
           <div className="flex items-center space-x-4">
             <svg className="w-14 h-7 fill-[#111111]" viewBox="0 0 24 24">
               <path d="M21.707 5.293c-.201-.2-.472-.3-.748-.284-4.832.28-11.83 3.654-15.69 7.828-2.617 2.827-3.81 5.61-3.272 7.625.56 2.102 2.766 3.125 5.922 2.742 7.747-.94 15.088-8.257 15.088-16.911 0-.353-.139-.691-.3-1zm-14.73 15.6c-2.316.28-3.79-.34-4.14-1.652-.363-1.36.439-3.414 2.37-5.501 3.256-3.522 9.074-6.52 13.407-7.258-1.572 6.643-7.24 13.882-11.637 14.411z" />
             </svg>
             <div className="hidden sm:block border-l border-gray-300 pl-4">
               <span className="font-display text-lg font-black tracking-tight uppercase block leading-none">
-                OFFICIAL NIKE.IN CHECKOUT
+                OFFICIAL NOVA CHECKOUT
               </span>
               <span className="text-[10px] font-mono font-semibold text-gray-500">
                 100% ENCRYPTED & SECURED
@@ -326,7 +326,7 @@ export const NikeCheckoutModal: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div>
                       <label className="block text-xs font-mono font-bold text-gray-700 uppercase mb-1.5">
-                        Email Address (for Nike receipt) *
+                        Email Address (for Nova receipt) *
                       </label>
                       <input
                         type="email"
@@ -385,7 +385,7 @@ export const NikeCheckoutModal: React.FC = () => {
                           Standard Delivery (Arrives in 3–5 Business Days)
                         </span>
                         <span className="text-xs font-mono text-emerald-700 font-semibold">
-                          Free for Nike Members
+                          Free for Nova Members
                         </span>
                       </div>
                     </div>
@@ -409,7 +409,7 @@ export const NikeCheckoutModal: React.FC = () => {
                       />
                       <div>
                         <span className="font-sans font-bold text-sm text-[#111111] block">
-                          Nike Priority Air Express (Arrives in 1–2 Business Days)
+                          Nova Priority Air Express (Arrives in 1–2 Business Days)
                         </span>
                         <span className="text-xs font-mono text-gray-500">
                           Guaranteed lightning dispatch
@@ -714,7 +714,7 @@ export const NikeCheckoutModal: React.FC = () => {
                     {isProcessing ? (
                       <div className="flex items-center space-x-2">
                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        <span>AUTHORIZING PAYMENT WITH NIKE GATEWAY...</span>
+                        <span>AUTHORIZING PAYMENT WITH NOVA GATEWAY...</span>
                       </div>
                     ) : (
                       <>
@@ -764,7 +764,7 @@ export const NikeCheckoutModal: React.FC = () => {
                     </div>
                     <div className="flex items-center space-x-3 text-gray-500">
                       <span className="w-2.5 h-2.5 rounded-full bg-gray-300" />
-                      <span>PACKING AT NIKE BHIWANDI MEGA FULFILMENT HUB</span>
+                      <span>PACKING AT NOVA CENTRAL FULFILMENT HUB</span>
                     </div>
                     <div className="flex items-center space-x-3 text-gray-500">
                       <span className="w-2.5 h-2.5 rounded-full bg-gray-300" />
@@ -841,7 +841,7 @@ export const NikeCheckoutModal: React.FC = () => {
                       type="text"
                       value={promoCode}
                       onChange={(e) => setPromoCode(e.target.value)}
-                      placeholder="PROMO CODE (e.g. NIKE2026)"
+                      placeholder="PROMO CODE (e.g. NOVA2026)"
                       className="flex-1 px-3.5 py-2 rounded-xl border border-gray-200 font-mono text-xs uppercase outline-none focus:border-black"
                     />
                     <button

@@ -3,7 +3,7 @@ import { Barlow_Condensed, Inter, Roboto_Mono } from 'next/font/google';
 import './globals.css';
 import { ExperienceProvider } from '@/context/ExperienceContext';
 
-// Nike Bold Condensed Headline Font (Matching nike.in Futura Extra Bold Display)
+// Nova Bold Condensed Headline Font (Matching nova.in Futura Extra Bold Display)
 const nikeFutura = Barlow_Condensed({
   subsets: ['latin'],
   weight: ['600', '700', '800', '900'],
@@ -11,7 +11,7 @@ const nikeFutura = Barlow_Condensed({
   display: 'swap',
 });
 
-// Nike Clean Sans Body Font (Matching nike.in Helvetica Neue / Inter)
+// Nova Clean Sans Body Font (Matching nova.in Helvetica Neue / Inter)
 const nikeBody = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -19,7 +19,7 @@ const nikeBody = Inter({
   display: 'swap',
 });
 
-// Nike Tech Telemetry Monospace Font
+// Nova Tech Telemetry Monospace Font
 const nikeMono = Roboto_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
@@ -28,32 +28,32 @@ const nikeMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Nike. Just Do It. Nike IN — Innovation 2025/2026',
+  title: 'NOVA — Innovation 2025/2026 | Next-Gen Kinetic Footwear',
   description:
-    'Nike delivers innovative products, experiences and services to inspire athletes. Explore the 3D interactive showcase: Air Max Dn, Pegasus 41, Alphafly 3, Mercurial Superfly, and LeBron XXI.',
+    'NOVA delivers breakthrough kinetic engineering, pressurized fluid systems, and precision sports footwear. Explore the live 3D showcase: NOVA DN, Pegasus 41, Alphafly 3, Mercurial Superfly, and LeBron XXI.',
   keywords: [
-    'Nike India',
-    'Nike Innovation',
-    'Nike Air Max Dn',
-    'Nike Pegasus 41',
-    'Nike Alphafly 3',
-    'Nike Mercurial Superfly',
-    'Nike LeBron XXI',
-    'Nike shoes online',
+    'NOVA Innovation',
+    'NOVA Footwear',
+    'NOVA Air Max Dn',
+    'NOVA Pegasus 41',
+    'NOVA Alphafly 3',
+    'NOVA Mercurial Superfly',
+    'NOVA LeBron XXI',
+    'NOVA shoes online',
   ],
-  authors: [{ name: 'Nike, Inc.' }],
+  authors: [{ name: 'NOVA Innovation Lab' }],
   openGraph: {
-    title: 'Nike. Just Do It. Nike IN — Innovation 2025/2026',
+    title: 'NOVA — Innovation 2025/2026 | Next-Gen Kinetic Footwear',
     description:
-      'Immersive 3D WebGL showcase of groundbreaking Nike sports science, pressurized Air units, and carbon Flyplates.',
+      'Immersive 3D WebGL showcase of groundbreaking NOVA sports science, pressurized air units, and carbon Flyplates.',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Nike.com',
+    siteName: 'NOVA.in',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nike. Just Do It. Nike IN',
-    description: 'Immersive 3D showcase of Nike footwear innovation.',
+    title: 'NOVA — Innovation 2025/2026',
+    description: 'Immersive 3D showcase of NOVA footwear innovation.',
   },
 };
 

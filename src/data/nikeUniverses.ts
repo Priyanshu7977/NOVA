@@ -68,31 +68,31 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     category: 'DYNAMIC AIR REVOLUTION',
     subtitle: 'Air Max Dn : The Next Era of Responsive Air',
     introText:
-      "The art of metamorphosis is at the core of Nike's design DNA. With the Air Max Dn, air ceases to be static—transforming into a dynamic fluid system that shifts in real time with every human stride.",
+      "The art of metamorphosis is at the core of Nova's design DNA. With the Air Max Dn, air ceases to be static—transforming into a dynamic fluid system that shifts in real time with every human stride.",
     highlightTitle: 'DYNAMIC AIR DUAL-PRESSURE UNIT',
     highlightDescription:
       'Engineered with two distinct pressurized air chambers comprising four cylindrical tubes. The rear chambers are pressurized to 15 PSI, while the front chambers sit at 5 PSI, creating seamless kinetic energy transfer from heel strike to toe-off.',
     knowHowTitle: 'BIOMECHANICAL FLUIDIC ENGINEERING',
     knowHowDescription:
-      'Born from thousands of hours at the Nike Sports Research Lab (NSRL), the Air Max Dn introduces haptic secondary compression. As you step, air actively flows between tubes, delivering a sensation of infinite rebound and floating transition.',
+      'Born from thousands of hours at the Nova Performance Research Lab (NSRL), the Air Max Dn introduces haptic secondary compression. As you step, air actively flows between tubes, delivering a sensation of infinite rebound and floating transition.',
     knowHowDescription2:
       'The multi-layered tactile mesh upper features siliconized aerodynamic print contours, fusing futuristic sculptural aesthetics with high-durability breathability.',
     interactionType: 'pump',
     interactionLabel: 'Press & Pump Air',
     interactionInstruction: 'Click or hold to trigger a sonic shockwave, pump the Dynamic Air pods and launch a 3D gravity kick!',
-    productName: 'Nike Air Max Dn',
+    productName: 'Nova Air Max Dn',
     realImageUrl: '/images/shoes/air-max-dn.png',
     priceINR: 14995,
     priceUSD: 160,
-    productUrl: 'https://www.nike.in/w?q=air%20max%20dn',
-    collectionUrl: 'https://www.nike.in/w/air-max-shoes-a6d8hzy7ok',
+    productUrl: 'https://nova-x.com/w?q=air%20max%20dn',
+    collectionUrl: 'https://nova-x.com/w/air-max-shoes-a6d8hzy7ok',
     specs: {
       weight: '345g (UK 8.5)',
       cushioning: 'Dynamic Air 4-Tube System (15 PSI / 5 PSI)',
       energyReturn: '86.5%',
       keyTech: 'Dynamic Air Dual-Chamber Unit + Multi-Layer Haptic Mesh',
       drop: '10mm',
-      athleteTestimonial: '"It feels like the air is alive underneath your feet, pushing you forward with zero lag." — Nike Lab Tester',
+      athleteTestimonial: '"It feels like the air is alive underneath your feet, pushing you forward with zero lag." — Nova Lab Tester',
     },
     explodedLayers: [
       {
@@ -165,7 +165,7 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     category: 'THE ICONIC WORKHORSE',
     subtitle: 'Pegasus 41 : The Metamorphosis of Daily Velocity',
     introText:
-      'For over four decades, the Pegasus has been the trusted heartbeat of global running. In its 41st evolution, Nike introduces ReactX foam—a revolutionary compound engineered for superior bounce and environmental harmony.',
+      'For over four decades, the Pegasus has been the trusted heartbeat of global running. In its 41st evolution, Nova introduces ReactX foam—a revolutionary compound engineered for superior bounce and environmental harmony.',
     highlightTitle: 'REACTX FOAM + DUAL ZOOM AIR',
     highlightDescription:
       'The Pegasus 41 debuts full-length ReactX foam, delivering 13% more energy return than standard React foam while slashing carbon emissions by 43%. Paired with forefoot and heel Zoom Air units for a snappy ride.',
@@ -177,12 +177,12 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     interactionType: 'rotate',
     interactionLabel: 'Rotate 360°',
     interactionInstruction: 'Drag horizontally or click to trigger an explosive sonic ripple and 360° orbital flip.',
-    productName: 'Nike Pegasus 41',
+    productName: 'Nova Pegasus 41',
     realImageUrl: '/images/shoes/pegasus-41.png',
     priceINR: 11895,
     priceUSD: 140,
-    productUrl: 'https://www.nike.in/w?q=pegasus%2041',
-    collectionUrl: 'https://www.nike.in/w/running-shoes-37v7jzy7ok',
+    productUrl: 'https://nova-x.com/w?q=pegasus%2041',
+    collectionUrl: 'https://nova-x.com/w/running-shoes-37v7jzy7ok',
     specs: {
       weight: '281g (UK 8.5)',
       cushioning: 'ReactX Foam + Forefoot & Heel Zoom Air Units',
@@ -210,7 +210,7 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
       {
         name: 'Heel Air Zoom Unit',
         description: 'Low-profile air chamber absorbing impact shock upon heel landing.',
-        material: 'Nike Air Pressurized Capsule',
+        material: 'Nova Air Pressurized Capsule',
       },
       {
         name: 'Waffle-Grip Rubber Outsole',
@@ -267,24 +267,24 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     category: 'MARATHON RECORD-BREAKER',
     subtitle: 'Alphafly 3 : The Science of Sub-Two-Hour Marathon Velocity',
     introText:
-      'The pinnacle expression of Nike racing alchemy. Engineered to propel world-class marathoners past human boundaries, the Alphafly 3 combines continuous bottom-loaded carbon plates with dual Zoom Air pods and ultra-light ZoomX foam.',
+      'The pinnacle expression of Nova racing alchemy. Engineered to propel world-class marathoners past human boundaries, the Alphafly 3 combines continuous bottom-loaded carbon plates with dual Zoom Air pods and ultra-light ZoomX foam.',
     highlightTitle: 'CONTINUOUS FLYPLATE + DUAL ZOOM AIR PODS',
     highlightDescription:
       'Featuring a single, continuous full-length carbon fiber Flyplate that stabilizes the entire foot from heel to toe. The wider carbon geometry channels explosive propulsion directly through the dual forefoot Air Zoom units.',
     knowHowTitle: 'ATOMIC WEIGHT REDUCTION & ZOOM-X TUNING',
     knowHowDescription:
-      '15% lighter than its predecessor. Nike designers carved away non-essential foam beneath the arch, connecting the heel and forefoot with a continuous ZoomX bottom for seamless transition through the 42.195-kilometer distance.',
+      '15% lighter than its predecessor. Nova designers carved away non-essential foam beneath the arch, connecting the heel and forefoot with a continuous ZoomX bottom for seamless transition through the 42.195-kilometer distance.',
     knowHowDescription2:
       'The upper is crafted from Atomknit 3.0, an ultralight spun yarn offering directional containment, zero water retention, and featherweight lockdown over marathon distances.',
     interactionType: 'explode',
     interactionLabel: 'Rotate & Explode Sole',
     interactionInstruction: 'Click or hold to disintegrate the carbon Flyplate, Zoom Air pods, and ZoomX chassis with laser telemetry.',
-    productName: 'Nike Alphafly 3',
+    productName: 'Nova Alphafly 3',
     realImageUrl: '/images/shoes/alphafly-3.png',
     priceINR: 22795,
     priceUSD: 285,
-    productUrl: 'https://www.nike.in/w?q=alphafly%203',
-    collectionUrl: 'https://www.nike.in/w/running-shoes-37v7jzy7ok',
+    productUrl: 'https://nova-x.com/w?q=alphafly%203',
+    collectionUrl: 'https://nova-x.com/w/running-shoes-37v7jzy7ok',
     specs: {
       weight: '218g (UK 8.5)',
       cushioning: 'Maximal ZoomX Foam + Dual Forefoot Air Zoom Pods',
@@ -302,7 +302,7 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
       {
         name: 'Dual Forefoot Air Zoom Pods',
         description: 'High-pressure air capsules loaded with internal tensile fibers returning explosive rebound.',
-        material: 'Pressurized Nike Air Gas Chambers',
+        material: 'Pressurized Nova Air Gas Chambers',
       },
       {
         name: 'Continuous Carbon Fiber Flyplate',
@@ -311,7 +311,7 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
       },
       {
         name: 'ZoomX Pure PEBA Foam Block',
-        description: 'Nike’s lightest, highest energy-return foam formulated from aerospace PEBA polymers.',
+        description: 'Nova’s lightest, highest energy-return foam formulated from aerospace PEBA polymers.',
         material: 'Autoclaved Polyether Block Amide (PEBA)',
       },
       {
@@ -381,12 +381,12 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     interactionType: 'draw',
     interactionLabel: 'Draw Speed Vector',
     interactionInstruction: 'Trace a diagonal cut across the screen to activate hypersonic sprint lines and audio whoosh.',
-    productName: 'Nike Mercurial Superfly 10 Elite',
+    productName: 'Nova Mercurial Superfly 10 Elite',
     realImageUrl: '/images/shoes/mercurial-superfly.png',
     priceINR: 24995,
     priceUSD: 295,
-    productUrl: 'https://www.nike.in/w?q=mercurial%20superfly',
-    collectionUrl: 'https://www.nike.in/w/football-shoes-1gdj0zy7ok',
+    productUrl: 'https://nova-x.com/w?q=mercurial%20superfly',
+    collectionUrl: 'https://nova-x.com/w/football-shoes-1gdj0zy7ok',
     specs: {
       weight: '198g (UK 8.5)',
       cushioning: '3/4 Length Football-Specific Air Zoom Cushioning Plate',
@@ -478,12 +478,12 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     interactionType: 'hold',
     interactionLabel: 'Hold to Activate Tension',
     interactionInstruction: 'Click and hold to tighten the 360° zonal cables with high-voltage glowing arcs and acoustic chime.',
-    productName: 'Nike LeBron XXI',
+    productName: 'Nova LeBron XXI',
     realImageUrl: '/images/shoes/court-alchemy.png',
     priceINR: 19995,
     priceUSD: 200,
-    productUrl: 'https://www.nike.in/w?q=lebron%20xxi',
-    collectionUrl: 'https://www.nike.in/w/basketball-shoes-3gl15zy7ok',
+    productUrl: 'https://nova-x.com/w?q=lebron%20xxi',
+    collectionUrl: 'https://nova-x.com/w/basketball-shoes-3gl15zy7ok',
     specs: {
       weight: '390g (UK 8.5)',
       cushioning: 'Forefoot Top-Loaded Zoom Turbo + Heel Bottom-Loaded 13mm Zoom Unit',
@@ -506,7 +506,7 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
       {
         name: 'Forefoot Zoom Turbo Cushioning',
         description: 'Segmented curved air unit that flexes across multi-directional cutting angles.',
-        material: 'Curved High-Pressure Nike Zoom Air',
+        material: 'Curved High-Pressure Nova Zoom Air',
       },
       {
         name: 'Carbon-Fiber Midfoot Torsional Shank',
@@ -568,10 +568,10 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     category: 'ARCHITECTURAL PILLARS REBORN',
     subtitle: 'Air Force 1, Dunk Low, Air Max 1 : The Endless Metamorphosis',
     introText:
-      'True design icons never stand still. The architectural pillars of Nike—from Bruce Kilgore’s 1982 Air Force 1 to Tinker Hatfield’s 1987 visible Air Max 1 and Peter Moore’s Dunk—continue their modern metamorphosis using sustainable luxury materials.',
+      'True design icons never stand still. The architectural pillars of Nova—from Bruce Kilgore’s 1982 Air Force 1 to Tinker Hatfield’s 1987 visible Air Max 1 and Peter Moore’s Dunk—continue their modern metamorphosis using sustainable luxury materials.',
     highlightTitle: 'NEXT NATURE & ARCHIVAL CRAFTSMANSHIP',
     highlightDescription:
-      'Reconstructed with premium full-grain leathers, recycled Nike Grind accents, and refined stitch-by-stitch tolerances. The timeless proportions remain pure, while interior comfort is upgraded with modern Ortholite and concealed encapsulated Air units.',
+      'Reconstructed with premium full-grain leathers, recycled Nova Grind accents, and refined stitch-by-stitch tolerances. The timeless proportions remain pure, while interior comfort is upgraded with modern Ortholite and concealed encapsulated Air units.',
     knowHowTitle: 'CULTURAL ANCHOR & ENDLESS INFLUENCE',
     knowHowDescription:
       'Transcendence across sports, hip-hop, skate culture, and high fashion. Each icon has spent decades evolving its material palette without ever compromising the definitive geometry that made it legendary.',
@@ -580,20 +580,20 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
     interactionType: 'timeline',
     interactionLabel: 'Hold to Explore Timeline',
     interactionInstruction: 'Click or hold to traverse 40+ years of iconic silhouette transformations with sonic timeline warp.',
-    productName: 'Nike Air Force 1 \'07 Next Nature',
+    productName: 'Nova Air Force 1 \'07 Next Nature',
     realImageUrl: '/images/shoes/icons-heritage.png',
     priceINR: 9695,
     priceUSD: 115,
-    productUrl: 'https://www.nike.in/w?q=air%20force%201',
-    collectionUrl: 'https://www.nike.in/w/lifestyle-shoes-13jrmzy7ok',
+    productUrl: 'https://nova-x.com/w?q=air%20force%201',
+    collectionUrl: 'https://nova-x.com/w/lifestyle-shoes-13jrmzy7ok',
     specs: {
       weight: '410g (UK 8.5)',
-      cushioning: 'Encapsulated Full-Length Nike Air Sole Unit',
+      cushioning: 'Encapsulated Full-Length Nova Air Sole Unit',
       energyReturn: '72.0%',
       keyTech: 'Full-Grain Leather + Stitched Cupsole + Encapsulated Air',
       drop: '10mm',
       surface: 'Streetwear & Hardwood',
-      athleteTestimonial: '"The Air Force 1 is an untouchable monument of style and pure street presence." — Nike Archival Curator',
+      athleteTestimonial: '"The Air Force 1 is an untouchable monument of style and pure street presence." — Nova Archival Curator',
     },
     explodedLayers: [
       {
@@ -602,7 +602,7 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
         material: 'Next Nature Sustainable Synthetic & Natural Leather',
       },
       {
-        name: 'Encapsulated Full-Length Nike Air Unit',
+        name: 'Encapsulated Full-Length Nova Air Unit',
         description: 'Hidden air chamber within the midsole providing all-day plush cushioning.',
         material: 'Pressurized Polyurethane Gas Capsule',
       },
@@ -614,7 +614,7 @@ export const NIKE_UNIVERSES: NikeUniverseData[] = [
       {
         name: 'Original Pivot-Circle Tread Pattern',
         description: 'Pioneered in 1982 for basketball pivot motions on hardwood courts.',
-        material: 'Non-Marking Traction Rubber with Nike Grind Flecks',
+        material: 'Non-Marking Traction Rubber with Nova Grind Flecks',
       },
     ],
     colorways: [

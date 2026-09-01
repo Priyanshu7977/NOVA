@@ -48,13 +48,13 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
           color: activePalette.textHeading,
         }}
       >
-        {/* Left: Nike Swoosh & Event Title */}
+        {/* Left: Nova Swoosh & Event Title */}
         <div className="flex items-center space-x-5">
           <button
             onClick={() => onNavigateToUniverse(0)}
             className="flex items-center space-x-3 group text-left"
           >
-            {/* Iconic Nike Swoosh Vector */}
+            {/* Iconic Nova Swoosh Vector */}
             <svg
               className="w-10 h-10 transition-colors duration-500"
               style={{ fill: activePalette.textHeading }}
@@ -67,7 +67,7 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
                 className="font-display text-sm font-black tracking-tight uppercase leading-none transition-colors duration-500"
                 style={{ color: activePalette.textHeading }}
               >
-                NIKE INNOVATION
+                NOVA INNOVATION
               </span>
               <span
                 className="font-sans text-[10px] font-bold tracking-widest uppercase transition-colors duration-500"
@@ -355,15 +355,15 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
               color: activePalette.textMuted,
             }}
           >
-            <span>OFFICIAL SOURCE: NIKE.IN</span>
+            <span>OFFICIAL SOURCE: NOVA.IN</span>
             <a
-              href="https://www.nike.in/"
+              href="https://nova-x.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-1 font-bold hover:underline mt-2 sm:mt-0"
               style={{ color: activePalette.textHeading }}
             >
-              <span>VISIT NIKE INDIA OFFICIAL STORE</span>
+              <span>VISIT NOVA OFFICIAL FLAGSHIP STORE</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

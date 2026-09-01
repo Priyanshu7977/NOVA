@@ -117,7 +117,7 @@ export const NikeAddToCartModal: React.FC<NikeAddToCartModalProps> = ({ universe
         className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300"
       />
 
-      {/* Main Modal Card (Official Nike.in Architecture) */}
+      {/* Main Modal Card (Official Nova.in Architecture) */}
       <div className="relative z-10 w-full max-w-4xl max-h-[92vh] overflow-y-auto bg-[#ffffff] text-[#111111] rounded-[2.5rem] shadow-2xl border border-[#e5e5e5] flex flex-col md:flex-row overflow-hidden">
         {/* Close Button */}
         <button
@@ -148,7 +148,7 @@ export const NikeAddToCartModal: React.FC<NikeAddToCartModalProps> = ({ universe
               {universe.highlightTitle}
             </span>
             <span className="text-[10px] font-mono font-bold text-gray-500 uppercase tracking-wider">
-              AUTHENTIC NIKE.IN
+              AUTHENTIC NOVA.IN
             </span>
           </div>
 
@@ -167,7 +167,7 @@ export const NikeAddToCartModal: React.FC<NikeAddToCartModalProps> = ({ universe
           </div>
         </div>
 
-        {/* RIGHT COLUMN: Official Nike Purchase & Size Selector */}
+        {/* RIGHT COLUMN: Official Nova Purchase & Size Selector */}
         <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-white">
           {/* Title, Category & Pricing */}
           <div>
@@ -307,7 +307,7 @@ export const NikeAddToCartModal: React.FC<NikeAddToCartModalProps> = ({ universe
             <div className="flex flex-col items-center">
               <Truck className="w-4 h-4 text-emerald-600 mb-1" />
               <span className="text-[10px] font-mono font-bold text-gray-700">FREE DELIVERY</span>
-              <span className="text-[9px] font-mono text-gray-400">For Nike Members</span>
+              <span className="text-[9px] font-mono text-gray-400">For Nova Members</span>
             </div>
             <div className="flex flex-col items-center">
               <RotateCcw className="w-4 h-4 text-blue-600 mb-1" />
@@ -317,7 +317,7 @@ export const NikeAddToCartModal: React.FC<NikeAddToCartModalProps> = ({ universe
             <div className="flex flex-col items-center">
               <ShieldCheck className="w-4 h-4 text-amber-600 mb-1" />
               <span className="text-[10px] font-mono font-bold text-gray-700">100% ORIGINAL</span>
-              <span className="text-[9px] font-mono text-gray-400">Direct from Nike</span>
+              <span className="text-[9px] font-mono text-gray-400">Direct from Nova</span>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ export const HeroVideoScrubber: React.FC<HeroVideoScrubberProps> = ({ onVideoLoa
   const animationFrameRef = useRef<number | null>(null);
   const [selectedCrateIndex, setSelectedCrateIndex] = useState<number>(2); // Green Crate by default
 
-  // 9 Authentic Nike Colorways matching the 3x3 Grid in the Video
+  // 9 Authentic Nova Colorways matching the 3x3 Grid in the Video
   const CRATE_COLORWAYS = [
     { id: 0, name: 'Goldenrod Yellow', hex: '#eab308', upper: 'solar', accent: 'orange' },
     { id: 1, name: 'Pink Foam', hex: '#ec4899', upper: 'ultraviolet', accent: 'violet' },
@@ -116,7 +116,7 @@ export const HeroVideoScrubber: React.FC<HeroVideoScrubberProps> = ({ onVideoLoa
         <div className="bg-black/50 backdrop-blur-2xl border border-white/20 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-4 max-w-sm sm:max-w-md w-full mx-4 text-center">
           <div className="space-y-1">
             <span className="text-[10px] font-mono font-bold tracking-mega text-emerald-400 uppercase">
-              SELECT NIKE COLORWAY CRATE
+              SELECT NOVA COLORWAY CRATE
             </span>
             <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white uppercase">
               CHOOSE YOUR LOADOUT
