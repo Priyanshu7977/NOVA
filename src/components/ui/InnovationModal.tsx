@@ -1,9 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, ExternalLink, Activity, Sparkles } from 'lucide-react';
+import { X, ExternalLink, Activity, Sparkles, ShoppingBag, Zap, Truck, ShieldCheck } from 'lucide-react';
 import { NikeUniverseData, NikeProductColorway } from '@/data/nikeUniverses';
 import { audio } from '@/components/audio/NikeAudioEngine';
+import { MiniSneakerCanvas } from './MiniSneakerCanvas';
+import { useExperience } from '@/context/ExperienceContext';
+import { PRODUCTS } from '@/data/products';
 
 interface InnovationModalProps {
   universe: NikeUniverseData | null;
@@ -11,27 +14,79 @@ interface InnovationModalProps {
 }
 
 export const InnovationModal: React.FC<InnovationModalProps> = ({ universe, onClose }) => {
+  const { addToCart, setIsCartOpen, setIsCheckoutOpen } = useExperience();
+
   if (!universe) return null;
 
   const [selectedColorway, setSelectedColorway] = useState<NikeProductColorway>(
     universe.colorways[0]
   );
   const [selectedLayerIndex, setSelectedLayerIndex] = useState<number>(0);
-  const [turntableRotation, setTurntableRotation] = useState<number>(0);
-  const [isCrazyFlipping, setIsCrazyFlipping] = useState<boolean>(false);
+  const [selectedSize, setSelectedSize] = useState<string>('UK 9');
 
-  const handleRotate = () => {
+  const handleAddToCart = () => {
     audio.playSonicBlast();
-    setIsCrazyFlipping(true);
-    setTurntableRotation((prev) => prev + 360);
-    setTimeout(() => setIsCrazyFlipping(false), 800);
+    const product = PRODUCTS.find((p) => p.id === universe.id) || {
+      id: universe.id,
+      name: universe.productName,
+      tagline: universe.subtitle,
+      price: universe.priceINR,
+      category: universe.category,
+      description: universe.highlightDescription,
+      defaultColorway: selectedColorway,
+      colorways: universe.colorways,
+      specs: {
+        weight: universe.specs.weight,
+        drop: universe.specs.drop || '10mm',
+        stackHeight: universe.specs.stackHeight || '36mm',
+        energyReturn: universe.specs.energyReturn,
+        cushioning: universe.specs.cushioning,
+        stability: 'Neutral / High Dynamic Response',
+        surface: 'Road / Track / Field',
+      },
+      features: [universe.highlightTitle, universe.knowHowTitle],
+      technologyBadge: universe.highlightTitle,
+    };
+
+    addToCart(product as any, selectedColorway, selectedSize);
+    onClose();
+    setIsCartOpen(true);
+  };
+
+  const handleInstantCheckout = () => {
+    audio.playSonicBlast();
+    const product = PRODUCTS.find((p) => p.id === universe.id) || {
+      id: universe.id,
+      name: universe.productName,
+      tagline: universe.subtitle,
+      price: universe.priceINR,
+      category: universe.category,
+      description: universe.highlightDescription,
+      defaultColorway: selectedColorway,
+      colorways: universe.colorways,
+      specs: {
+        weight: universe.specs.weight,
+        drop: universe.specs.drop || '10mm',
+        stackHeight: universe.specs.stackHeight || '36mm',
+        energyReturn: universe.specs.energyReturn,
+        cushioning: universe.specs.cushioning,
+        stability: 'Neutral / High Dynamic Response',
+        surface: 'Road / Track / Field',
+      },
+      features: [universe.highlightTitle, universe.knowHowTitle],
+      technologyBadge: universe.highlightTitle,
+    };
+
+    addToCart(product as any, selectedColorway, selectedSize);
+    onClose();
+    setIsCheckoutOpen(true);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xl p-4 sm:p-8 animate-fade-in overflow-y-auto">
-      <div className="relative w-full max-w-6xl bg-[#faf9f6] border border-black/10 rounded-3xl overflow-hidden shadow-2xl my-auto text-[#111111] flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xl p-4 sm:p-8 animate-fade-in overflow-y-auto select-none">
+      <div className="relative w-full max-w-6xl bg-[#faf9f6] border border-black/10 rounded-[2.5rem] overflow-hidden shadow-2xl my-auto text-[#111111] flex flex-col max-h-[92vh]">
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-black/10 bg-white/80">
+        <div className="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-black/10 bg-white/90 sticky top-0 z-20">
           <div className="flex items-center space-x-3">
             <span
               className="w-2.5 h-2.5 rounded-full animate-ping"
@@ -44,50 +99,37 @@ export const InnovationModal: React.FC<InnovationModalProps> = ({ universe, onCl
 
           <button
             onClick={onClose}
-            className="p-2.5 rounded-full bg-black/5 hover:bg-black/10 text-[#111111] transition-colors"
+            className="p-2.5 rounded-full bg-black/5 hover:bg-black/10 text-[#111111] transition-all hover:scale-105 active:scale-95"
+            aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Modal Main Body */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-10 overflow-y-auto">
-          {/* Left Column (5 Cols): Real Product Visualizer & Exploded Layers */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-10 overflow-y-auto bg-[#fafafa]">
+          {/* Left Column (5 Cols): Live 3D Sneaker Visualizer & Exploded Chassis Layers */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
-            {/* Interactive Real Shoe Turntable Card with Sonic Blast */}
+            {/* Interactive Real 3D Sneaker Canvas */}
             <div
-              onClick={handleRotate}
-              className="relative h-72 sm:h-80 rounded-3xl border border-black/10 bg-white shadow-sm flex flex-col items-center justify-center overflow-hidden group cursor-pointer"
+              className="relative h-72 sm:h-80 rounded-3xl border border-black/10 bg-white shadow-sm flex flex-col items-center justify-center overflow-hidden group"
+              style={{
+                background: `linear-gradient(135deg, ${universe.accentColor}12 0%, #ffffff 100%)`,
+              }}
             >
-              {/* Real Nike Shoe Image */}
-              <div
-                className={`relative w-64 sm:w-72 h-44 flex items-center justify-center transition-all duration-700 ${
-                  isCrazyFlipping ? 'scale-110 rotate-12' : 'hover:scale-105'
-                }`}
-                style={{
-                  transform: `rotateY(${turntableRotation}deg)`,
-                }}
-              >
-                <img
-                  src={universe.realImageUrl}
-                  alt={universe.productName}
-                  className="w-full h-full object-contain filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.15)]"
-                />
+              {/* Exact 3D Sneaker Model Canvas */}
+              <div className="w-full h-full flex items-center justify-center">
+                <MiniSneakerCanvas universe={universe} heightClass="h-72 sm:h-80" />
               </div>
 
-              {/* Sonic Pulse Halo on Click */}
-              {isCrazyFlipping && (
-                <div className="absolute inset-0 border-2 border-[#0284c7]/40 rounded-3xl animate-ping pointer-events-none" />
-              )}
-
-              {/* 360 Rotation Action Button */}
-              <div className="absolute bottom-4 right-4 flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-[#111111] text-white text-[11px] font-sans font-bold tracking-wider uppercase transition-colors shadow-md">
+              {/* 360 Rotation Action Badge */}
+              <div className="absolute bottom-4 right-4 flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full bg-[#111111] text-white text-[11px] font-sans font-bold tracking-wider uppercase shadow-md">
                 <Sparkles className="w-3.5 h-3.5 text-[#38bdf8]" />
-                <span>360° SONIC FLIP</span>
+                <span>3D TURNTABLE ACTIVE</span>
               </div>
 
               <span className="absolute top-4 left-4 text-[10px] font-mono text-[#888888] tracking-wider uppercase font-bold">
-                AUTHENTIC PRODUCT TELEMETRY
+                AUTHENTIC PRODUCT 3D TELEMETRY
               </span>
             </div>
 
@@ -106,7 +148,7 @@ export const InnovationModal: React.FC<InnovationModalProps> = ({ universe, onCl
                     }}
                     className={`flex flex-col p-2.5 rounded-2xl border text-left transition-all ${
                       selectedColorway.id === cw.id
-                        ? 'border-[#111111] bg-white shadow-md'
+                        ? 'border-[#111111] bg-white shadow-md scale-[1.02]'
                         : 'border-black/10 bg-white/60 hover:bg-white'
                     }`}
                   >
@@ -140,10 +182,10 @@ export const InnovationModal: React.FC<InnovationModalProps> = ({ universe, onCl
                       setSelectedLayerIndex(idx);
                       audio.playExplode();
                     }}
-                    className={`w-full flex items-start space-x-3 p-3 rounded-2xl border text-left transition-all ${
+                    className={`w-full flex items-start space-x-3 p-3.5 rounded-2xl border text-left transition-all ${
                       selectedLayerIndex === idx
                         ? 'border-[#0284c7] bg-[#f0f9ff] shadow-sm'
-                        : 'border-black/10 bg-white/60 hover:bg-white'
+                        : 'border-black/10 bg-white hover:bg-gray-50'
                     }`}
                   >
                     <span className="font-mono text-xs font-bold text-[#0284c7] mt-0.5">
@@ -166,7 +208,7 @@ export const InnovationModal: React.FC<InnovationModalProps> = ({ universe, onCl
             </div>
           </div>
 
-          {/* Right Column (7 Cols): Engineering Deep-Dive & Purchase CTA */}
+          {/* Right Column (7 Cols): Engineering Deep-Dive & Direct Add to Cart / Checkout */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             <div className="space-y-6">
               <div>
@@ -244,32 +286,49 @@ export const InnovationModal: React.FC<InnovationModalProps> = ({ universe, onCl
               </div>
             </div>
 
-            {/* Price & Official Nike India E-Commerce Buy CTA */}
-            <div className="pt-6 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div>
-                <span className="font-mono text-[10px] text-[#777777] uppercase tracking-wider block font-bold">
-                  OFFICIAL PRICE (INCL. TAXES)
-                </span>
-                <div className="flex items-baseline space-x-2">
-                  <span className="font-sans text-2xl font-black text-[#111111]">
-                    ₹{universe.priceINR.toLocaleString('en-IN')}
+            {/* Price & Direct Purchase Action Panel */}
+            <div className="pt-6 border-t border-black/10 space-y-4">
+              <div className="flex items-baseline justify-between">
+                <div>
+                  <span className="font-mono text-[10px] text-[#777777] uppercase tracking-wider block font-bold">
+                    OFFICIAL PRICE (INCL. TAXES)
                   </span>
-                  <span className="font-sans text-xs font-bold text-[#777777]">
-                    / ${universe.priceUSD}
-                  </span>
+                  <div className="flex items-baseline space-x-2">
+                    <span className="font-sans text-3xl font-black text-[#111111]">
+                      ₹{universe.priceINR.toLocaleString('en-IN')}
+                    </span>
+                    <span className="font-sans text-xs font-bold text-[#777777]">
+                      / ${universe.priceUSD} USD
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-2 text-emerald-700 text-xs font-mono font-bold">
+                  <Truck className="w-4 h-4" />
+                  <span>FREE MEMBER DELIVERY</span>
                 </div>
               </div>
 
-              <a
-                href={universe.productUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => audio.playChime(880, 'sine', 0.2)}
-                className="w-full sm:w-auto flex items-center justify-center space-x-3 px-9 py-4 rounded-full bg-[#111111] hover:bg-black text-white font-sans font-bold text-xs tracking-widest uppercase transition-all shadow-xl hover:scale-105 active:scale-95"
-              >
-                <span>ACQUIRE ON NIKE.IN</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
+              {/* Dual Purchase Actions */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={handleAddToCart}
+                  className="w-full py-4 rounded-2xl bg-[#111111] hover:bg-black text-white font-sans font-bold text-xs tracking-widest uppercase transition-all shadow-xl flex items-center justify-center space-x-2 active:scale-98"
+                >
+                  <ShoppingBag className="w-4 h-4" />
+                  <span>ADD TO BAG</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleInstantCheckout}
+                  className="w-full py-4 rounded-2xl bg-[#0284c7] hover:bg-[#0369a1] text-white font-sans font-bold text-xs tracking-widest uppercase transition-all shadow-xl flex items-center justify-center space-x-2 active:scale-98"
+                >
+                  <Zap className="w-4 h-4 text-amber-300 fill-amber-300" />
+                  <span>BUY NOW • CHECKOUT</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
