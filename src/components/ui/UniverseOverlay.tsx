@@ -256,8 +256,8 @@ export const UniverseOverlay: React.FC<UniverseOverlayProps> = ({
               >
                 GENUINE 3D SILHOUETTE
               </span>
-              <div className="w-full h-32 flex items-center justify-center overflow-hidden">
-                <MiniSneakerCanvas universe={currentUniverse} />
+              <div className="w-full h-36 flex items-center justify-center overflow-hidden">
+                <MiniSneakerCanvas universe={currentUniverse} heightClass="h-36" />
               </div>
               <div
                 className="flex items-center justify-between mt-2 pt-2 border-t transition-colors duration-500"

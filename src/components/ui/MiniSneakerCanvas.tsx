@@ -99,27 +99,30 @@ const MiniShoeMesh: React.FC<{ universe: NikeUniverseData }> = ({ universe }) =>
     if (!meshRef.current) return;
     const time = state.clock.getElapsedTime();
     meshRef.current.rotation.y = time * 0.85 - Math.PI * 0.35;
-    meshRef.current.position.y = -0.3 + Math.sin(time * 2.5) * 0.04;
+    meshRef.current.position.y = -0.55 + Math.sin(time * 2.2) * 0.03;
   });
 
   return (
-    <group ref={meshRef} scale={[2.6, 2.6, 2.6]} position={[0, -0.3, 0]}>
+    <group ref={meshRef} scale={[6.2, 6.2, 6.2]} position={[0, -0.55, 0]}>
       <primitive object={clonedScene} />
     </group>
   );
 };
 
-export const MiniSneakerCanvas: React.FC<{ universe: NikeUniverseData }> = ({ universe }) => {
+export const MiniSneakerCanvas: React.FC<{ universe: NikeUniverseData; heightClass?: string }> = ({
+  universe,
+  heightClass = 'h-36',
+}) => {
   return (
-    <div className="w-full h-32 relative pointer-events-none">
+    <div className={`w-full ${heightClass} relative pointer-events-none flex items-center justify-center`}>
       <Canvas
-        camera={{ position: [0, 0.15, 3.4], fov: 45 }}
+        camera={{ position: [0, 0.05, 2.2], fov: 38 }}
         gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
       >
-        <ambientLight intensity={1.5} />
-        <directionalLight position={[4, 5, 4]} intensity={2.5} />
-        <directionalLight position={[-4, 2, -3]} intensity={1.2} />
-        <pointLight position={[0, 2, 2]} intensity={1.0} color="#ffffff" />
+        <ambientLight intensity={1.6} />
+        <directionalLight position={[4, 5, 4]} intensity={2.6} />
+        <directionalLight position={[-4, 2, -3]} intensity={1.4} />
+        <pointLight position={[0, 2, 2]} intensity={1.2} color="#ffffff" />
         <Suspense fallback={null}>
           <MiniShoeMesh universe={universe} />
         </Suspense>

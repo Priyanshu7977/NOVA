@@ -265,8 +265,8 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
                 </div>
 
                 {/* Exact 3D Sneaker Model Canvas */}
-                <div className="w-full h-32 my-3 rounded-2xl bg-black/[0.02] flex items-center justify-center overflow-hidden">
-                  <MiniSneakerCanvas universe={u} />
+                <div className="w-full h-36 my-2 rounded-2xl bg-black/[0.02] flex items-center justify-center overflow-hidden">
+                  <MiniSneakerCanvas universe={u} heightClass="h-36" />
                 </div>
 
                 <div className="flex items-center justify-between pt-2 border-t border-black/[0.06]">
