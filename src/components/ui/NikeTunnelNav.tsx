@@ -11,12 +11,14 @@ interface NikeTunnelNavProps {
   currentUniverseIndex: number;
   onNavigateToUniverse: (index: number) => void;
   onOpenShoeModal?: (universe: any) => void;
+  onReplayIntro?: () => void;
 }
 
 export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
   currentUniverseIndex,
   onNavigateToUniverse,
   onOpenShoeModal,
+  onReplayIntro,
 }) => {
   const { cartItems, setIsCartOpen } = useExperience();
   const [isMuted, setIsMuted] = useState(true);
@@ -210,13 +212,32 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
                 SELECT INNOVATION UNIVERSE (VISUAL DIRECTORY)
               </span>
             </div>
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="p-3 rounded-full bg-black/5 hover:bg-black/10 transition-colors"
-              style={{ color: activePalette.textHeading }}
-            >
-              <X className="w-6 h-6" />
-            </button>
+            <div className="flex items-center space-x-3">
+              {onReplayIntro && (
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    onReplayIntro();
+                  }}
+                  className="flex items-center space-x-1.5 px-4 py-2 rounded-full border text-xs font-mono font-bold uppercase transition-all hover:scale-105 shadow-sm"
+                  style={{
+                    backgroundColor: activePalette.buttonBg,
+                    color: activePalette.buttonText,
+                    borderColor: activePalette.badgeBorder,
+                  }}
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                  <span>REPLAY 3D INTRO</span>
+                </button>
+              )}
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-3 rounded-full bg-black/5 hover:bg-black/10 transition-colors"
+                style={{ color: activePalette.textHeading }}
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
           </div>
 
           {/* Visual Cards Grid with Real Product Images */}

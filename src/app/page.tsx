@@ -9,6 +9,7 @@ import { NikeAddToCartModal } from '@/components/ui/NikeAddToCartModal';
 import { CartDrawer } from '@/components/ui/CartDrawer';
 import { NikeCheckoutModal } from '@/components/ui/NikeCheckoutModal';
 import { OutroSection } from '@/components/ui/OutroSection';
+import { Nova3DCinematicOpening } from '@/components/intro/Nova3DCinematicOpening';
 import { audio } from '@/components/audio/NikeAudioEngine';
 import { useExperience } from '@/context/ExperienceContext';
 
@@ -41,6 +42,7 @@ class CanvasErrorBoundary extends React.Component<
 
 export default function NikeInnovationPage() {
   const [isMounted, setIsMounted] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const [currentProgress, setCurrentProgress] = useState(0); // Continuous float (0.0 to 7.0)
   const [selectedUniverseModal, setSelectedUniverseModal] = useState<NikeUniverseData | null>(null);
 
@@ -237,6 +239,7 @@ export default function NikeInnovationPage() {
         currentUniverseIndex={currentProgress}
         onNavigateToUniverse={navigateToUniverse}
         onOpenShoeModal={(u) => setSelectedUniverseModal(u)}
+        onReplayIntro={() => setShowIntro(true)}
       />
 
       {/* 2. 3D WebGL Contrasty Tunnel Canvas (3D Kick-Flip Physics on Shoe Click) */}
@@ -281,6 +284,11 @@ export default function NikeInnovationPage() {
 
       {/* 7. Official Nova.in Multi-Step Checkout Modal with Real Payment Gateways */}
       <NikeCheckoutModal />
+
+      {/* 8. Fullscreen 3D Animated Cinematic Opening Experience */}
+      {showIntro && (
+        <Nova3DCinematicOpening onComplete={() => setShowIntro(false)} />
+      )}
     </main>
   );
 }
