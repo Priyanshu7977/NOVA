@@ -12,7 +12,6 @@ interface RealNikeSneaker3DProps {
   manualRotationY: number;
   scrollProgress: number;
   isHovered: boolean;
-  activeHotspot?: number;
 }
 
 export const RealNikeSneaker3D: React.FC<RealNikeSneaker3DProps> = ({
@@ -21,7 +20,6 @@ export const RealNikeSneaker3D: React.FC<RealNikeSneaker3DProps> = ({
   manualRotationY,
   scrollProgress,
   isHovered,
-  activeHotspot = -1,
 }) => {
   const modelRef = useRef<THREE.Group>(null);
 
@@ -121,44 +119,20 @@ export const RealNikeSneaker3D: React.FC<RealNikeSneaker3DProps> = ({
     if (!modelRef.current) return;
     const time = state.clock.getElapsedTime();
 
-    // 1. Cartier-Style Continuous Multi-Axis Scroll Choreography
+    // 1. Continuous Multi-Axis Scroll Choreography
     const roomOffset = scrollProgress - universe.index;
     const scrollAngleY = -roomOffset * Math.PI * 0.6;
     const scrollTiltX = Math.sin(roomOffset * Math.PI * 0.6) * 0.22;
     const scrollRollZ = -roomOffset * 0.12;
 
-    // Hotspot Focus Angle Modifiers
-    let hotspotRotY = 0;
-    let hotspotRotX = 0;
-    let hotspotDisplaceY = 0;
-
-    if (activeHotspot === 0) {
-      // Forefoot Air Chamber Focus
-      hotspotRotY = 0.45;
-      hotspotRotX = -0.15;
-      hotspotDisplaceY = 0.05;
-    } else if (activeHotspot === 1) {
-      // Carbon Propulsion / Midsole Focus
-      hotspotRotY = -0.3;
-      hotspotRotX = 0.35;
-      hotspotDisplaceY = 0.08;
-    } else if (activeHotspot === 2) {
-      // Upper Haptic Mesh Focus
-      hotspotRotY = -0.55;
-      hotspotRotX = -0.25;
-      hotspotDisplaceY = 0.02;
-    }
-
-    // Combine Scroll Trajectory + 360 Turntable Drag + Hotspot Focus + Float Drift
+    // Combine Scroll Trajectory + 360 Turntable Drag + Float Drift
     const targetRotY =
       manualRotationY +
       scrollAngleY +
-      hotspotRotY +
       Math.sin(time * 0.6) * 0.04 -
       Math.PI * 0.35;
     const targetRotX =
       scrollTiltX +
-      hotspotRotX +
       Math.sin(time * 1.0) * 0.02 +
       0.05;
     const targetRotZ = scrollRollZ;
@@ -182,13 +156,9 @@ export const RealNikeSneaker3D: React.FC<RealNikeSneaker3DProps> = ({
       delta
     );
 
-    // Dynamic Hover & Hotspot Zoom Scale
-    const targetScale = isHovered || activeHotspot >= 0 ? 3.45 : 3.1;
+    // Dynamic Hover Scale
+    const targetScale = isHovered ? 3.4 : 3.1;
     modelRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 6 * delta);
-
-    // Dynamic Vertical Displacement
-    const targetPosY = -0.35 + hotspotDisplaceY;
-    modelRef.current.position.y = THREE.MathUtils.damp(modelRef.current.position.y, targetPosY, 6, delta);
   });
 
   return (

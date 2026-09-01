@@ -2,12 +2,10 @@
 
 import React, { useRef, useState, useMemo, Suspense } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { NikeUniverseData, NikeProductColorway } from '@/data/nikeUniverses';
 import { RealNikeSneaker3D } from './RealNikeSneaker3D';
 import { audio } from '@/components/audio/NikeAudioEngine';
-import { Sparkles, Zap, Activity, Layers, X } from 'lucide-react';
 
 interface NikeSneakerRendererProps {
   universe: NikeUniverseData;
@@ -17,96 +15,6 @@ interface NikeSneakerRendererProps {
   scrollProgress?: number;
   isHovered?: boolean;
 }
-
-// 3D Floating Interactive Telemetry Hotspot Pin & Expandable Card
-const TechHotspotPin: React.FC<{
-  position: [number, number, number];
-  title: string;
-  description: string;
-  material: string;
-  color: string;
-  isActive: boolean;
-  onToggle: () => void;
-}> = ({ position, title, description, material, color, isActive, onToggle }) => {
-  const [hovered, setHovered] = useState(false);
-  const pinRef = useRef<THREE.Group>(null);
-
-  useFrame((state) => {
-    if (!pinRef.current) return;
-    const t = state.clock.getElapsedTime();
-    pinRef.current.position.y = position[1] + Math.sin(t * 3.5 + position[0] * 2) * 0.035;
-  });
-
-  return (
-    <group
-      ref={pinRef}
-      position={position}
-      onClick={(e) => {
-        e.stopPropagation();
-        audio.playChime(isActive ? 520 : 880, 'sine', 0.15);
-        onToggle();
-      }}
-      onPointerOver={(e) => {
-        e.stopPropagation();
-        setHovered(true);
-        audio.playChime(780, 'sine', 0.05);
-      }}
-      onPointerOut={() => setHovered(false)}
-    >
-      {/* Outer Pulsing Ring */}
-      <mesh>
-        <ringGeometry args={[0.065, 0.095, 32]} />
-        <meshBasicMaterial
-          color={color}
-          transparent
-          opacity={isActive ? 1.0 : hovered ? 0.9 : 0.65}
-          side={THREE.DoubleSide}
-        />
-      </mesh>
-
-      {/* Inner Glowing Center Dot */}
-      <mesh>
-        <circleGeometry args={[0.04, 32]} />
-        <meshBasicMaterial color={isActive ? '#ffffff' : color} side={THREE.DoubleSide} />
-      </mesh>
-
-      {/* Interactive Floating HTML Luxury Card when active */}
-      {isActive && (
-        <Html position={[0.15, 0.1, 0]} center={false} distanceFactor={8} zIndexRange={[100, 0]}>
-          <div className="w-56 p-3 rounded-2xl bg-[#0f172a]/95 text-white border border-white/20 shadow-2xl backdrop-blur-xl animate-fade-in select-none pointer-events-auto">
-            <div className="flex items-center justify-between mb-1.5">
-              <div className="flex items-center space-x-1.5">
-                <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: color }} />
-                <span className="text-[9px] font-mono uppercase font-bold tracking-widest text-[#38bdf8]">
-                  HOTSPOT TELEMETRY
-                </span>
-              </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onToggle();
-                }}
-                className="text-gray-400 hover:text-white"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
-            <span className="font-display text-xs font-black uppercase block tracking-tight text-white mb-0.5">
-              {title}
-            </span>
-            <p className="font-sans text-[10px] text-gray-300 leading-snug font-medium mb-1.5">
-              {description}
-            </p>
-            <div className="pt-1.5 border-t border-white/10 flex items-center justify-between text-[8px] font-mono text-[#38bdf8] font-bold">
-              <span>TECH: {material}</span>
-            </div>
-          </div>
-        </Html>
-      )}
-    </group>
-  );
-};
 
 export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
   universe,
@@ -119,17 +27,15 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
   const shoeMeshRef = useRef<THREE.Group>(null);
   const shadowRef = useRef<THREE.Mesh>(null);
   const shockwaveRef = useRef<THREE.Mesh>(null);
+  const shockwaveRef2 = useRef<THREE.Mesh>(null);
 
-  // Active Selected Hotspot Index (-1 = none, 0, 1, 2)
-  const [activeHotspotIndex, setActiveHotspotIndex] = useState<number>(-1);
-
-  // Physics-based 3D Acrobatic Corkscrew Flip
-  const [isFlipping, setIsFlipping] = useState(false);
-  const flipProgressRef = useRef(0);
+  // Individual Shoe Click Animation State
+  const [isAnimating, setIsAnimating] = useState(false);
+  const animProgressRef = useRef(0);
   const [shockwaveScale, setShockwaveScale] = useState(0);
   const [shockwaveOpacity, setShockwaveOpacity] = useState(0);
 
-  // Realistic Soft Contact Drop Shadow
+  // Realistic Soft Contact Drop Shadow Texture
   const shadowTexture = useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = 256;
@@ -147,102 +53,211 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
     return new THREE.CanvasTexture(canvas);
   }, []);
 
-  // TRIGGER REALISTIC 3D ACROBATIC KICK-FLIP ON 3D SHOE CLICK
-  const triggerRealisticFlip = (e?: any) => {
+  // TRIGGER UNIQUE CRAZY 3D ANIMATION FOR EACH INDIVIDUAL SHOE
+  const triggerShoeSpecificAnimation = (e?: any) => {
     if (e && e.stopPropagation) e.stopPropagation();
-    audio.playSonicBlast();
-    setIsFlipping(true);
-    flipProgressRef.current = 0;
+
+    // Trigger individual shoe signature sound effect
+    switch (universe.id) {
+      case 'air-max-dn':
+        audio.playAirPump(1.0);
+        audio.playSonicBlast();
+        break;
+      case 'pegasus-41':
+        audio.playSonicBlast();
+        break;
+      case 'alphafly-3':
+        audio.playSpeedSprint();
+        audio.playSonicBlast();
+        break;
+      case 'mercurial-superfly':
+        audio.playKickImpact();
+        audio.playSpeedSprint();
+        break;
+      case 'court-alchemy':
+        audio.playTensionCable();
+        audio.playSonicBlast();
+        break;
+      case 'icons-heritage':
+      default:
+        audio.playChime(520, 'sine', 0.4);
+        audio.playSonicBlast();
+        break;
+    }
+
+    setIsAnimating(true);
+    animProgressRef.current = 0;
     setShockwaveScale(0.2);
-    setShockwaveOpacity(0.9);
-    setActiveHotspotIndex(-1); // Close any active hotspot during flip
+    setShockwaveOpacity(1.0);
   };
 
   useFrame((state, delta) => {
-    if (!groupRef.current) return;
+    if (!groupRef.current || !shoeMeshRef.current) return;
     const time = state.clock.getElapsedTime();
 
-    // 1. Natural Breathing & Floating Levitation
-    const hoverScale = isHovered ? 1.05 : 1.0;
+    // 1. Natural Ambient Floating Levitation
+    const hoverScale = isHovered ? 1.06 : 1.0;
     const idleLevitation = Math.sin(time * 2.2) * 0.06;
 
-    // 2. REALISTIC 3D ACROBATIC JUMP & CORKSCREW FLIP
+    // 2. INDIVIDUAL SHOE CUSTOM 3D ANIMATIONS (DIFFERENT FOR EACH SHOE!)
     let jumpY = 0;
-    let flipRotX = 0;
-    let flipRotY = 0;
-    let flipRotZ = 0;
+    let jumpZ = 0;
+    let jumpX = 0;
+    let rotX = 0;
+    let rotY = 0;
+    let rotZ = 0;
+    let scaleModifierX = 1.0;
+    let scaleModifierY = 1.0;
+    let scaleModifierZ = 1.0;
 
-    if (isFlipping) {
-      flipProgressRef.current += delta * 1.65;
-      const p = flipProgressRef.current;
+    if (isAnimating) {
+      // Speed multiplier for snappy high-energy animation
+      const animSpeed = universe.id === 'icons-heritage' ? 1.2 : 1.55;
+      animProgressRef.current += delta * animSpeed;
+      const p = Math.min(1.0, animProgressRef.current);
 
       if (p >= 1.0) {
-        setIsFlipping(false);
-        flipProgressRef.current = 0;
+        setIsAnimating(false);
+        animProgressRef.current = 0;
       } else {
-        // Parabolic Jump Arc
-        jumpY = Math.sin(p * Math.PI) * 1.6;
+        switch (universe.id) {
+          // ==========================================
+          // 01. AIR MAX DN: PNEUMATIC COMPRESSION & ROCKET BACKFLIP
+          // ==========================================
+          case 'air-max-dn': {
+            if (p < 0.2) {
+              // Compress downward like pressurized pneumatic spring
+              const subP = p / 0.2;
+              jumpY = -0.35 * Math.sin(subP * Math.PI);
+              scaleModifierY = 0.82;
+              scaleModifierX = 1.12;
+              scaleModifierZ = 1.12;
+            } else {
+              // Massive rocket backflip launch into the air
+              const subP = (p - 0.2) / 0.8;
+              jumpY = Math.sin(subP * Math.PI) * 2.2;
+              rotX = Math.sin(subP * Math.PI) * Math.PI * 2; // Full 360 loop
+              rotY = Math.sin(subP * Math.PI * 2) * 0.6;
+              rotZ = Math.sin(subP * Math.PI * 2) * 0.35;
+            }
+            break;
+          }
 
-        // Smooth 360° Acrobatic Tumbling Corkscrew Flip
-        flipRotX = Math.sin(p * Math.PI) * Math.PI * 2;
-        flipRotY = Math.sin(p * Math.PI * 2) * 0.8;
-        flipRotZ = Math.sin(p * Math.PI * 2) * 0.45;
+          // ==========================================
+          // 02. PEGASUS 41: DOUBLE 720° CORKSCREW BARREL ROLL
+          // ==========================================
+          case 'pegasus-41': {
+            jumpY = Math.sin(p * Math.PI) * 1.6;
+            rotY = p * Math.PI * 4; // High-speed 720° horizontal spin
+            rotZ = Math.sin(p * Math.PI) * Math.PI * 1.2; // Barrel roll corkscrew tilt
+            rotX = Math.sin(p * Math.PI * 2) * 0.4;
+            break;
+          }
 
-        // Expand floor shockwave
+          // ==========================================
+          // 03. ALPHAFLY 3: CARBON SLINGSHOT & FORWARD SUPERSONIC SPRINT
+          // ==========================================
+          case 'alphafly-3': {
+            if (p < 0.25) {
+              // Slingshot pull back
+              const subP = p / 0.25;
+              jumpZ = subP * 0.8;
+              jumpY = subP * 0.3;
+              rotX = -subP * 0.5;
+            } else {
+              // Supersonic forward slingshot burst
+              const subP = (p - 0.25) / 0.75;
+              jumpZ = 0.8 - Math.sin(subP * Math.PI) * 2.5;
+              jumpY = Math.sin(subP * Math.PI) * 1.7;
+              rotX = Math.sin(subP * Math.PI) * Math.PI * 2;
+              rotZ = Math.sin(subP * Math.PI) * 0.6;
+              scaleModifierZ = 1.0 + Math.sin(subP * Math.PI) * 0.3; // Aero stretch
+            }
+            break;
+          }
+
+          // ==========================================
+          // 04. MERCURIAL SUPERFLY 10: SCISSOR VOLLEY KICK & TRI-STAR SLICE
+          // ==========================================
+          case 'mercurial-superfly': {
+            jumpY = Math.sin(p * Math.PI) * 2.0;
+            jumpX = Math.sin(p * Math.PI * 2) * 0.5;
+            rotX = Math.sin(p * Math.PI) * Math.PI * 2.5; // Radical bicycle volley angle
+            rotY = -0.6 + Math.sin(p * Math.PI * 2) * 1.2;
+            rotZ = Math.sin(p * Math.PI) * 1.1;
+            break;
+          }
+
+          // ==========================================
+          // 05. LEBRON XXI: 360° HIGH-TENSION LOCK & SEISMIC SLAM
+          // ==========================================
+          case 'court-alchemy': {
+            if (p < 0.5) {
+              // High levitation power charge
+              const subP = p / 0.5;
+              jumpY = subP * 1.6;
+              rotY = subP * Math.PI * 2;
+              rotX = Math.sin(subP * Math.PI) * 0.4;
+            } else {
+              // Thunderous downward power slam
+              const subP = (p - 0.5) / 0.5;
+              jumpY = 1.6 - subP * 2.0;
+              rotY = Math.PI * 2 + Math.sin(subP * Math.PI) * 0.5;
+              rotX = (1 - subP) * 0.4;
+            }
+            break;
+          }
+
+          // ==========================================
+          // 06. THE ICONS: MAJESTIC TIME-WARP ORBITAL SHOWCASE
+          // ==========================================
+          case 'icons-heritage':
+          default: {
+            jumpY = Math.sin(p * Math.PI) * 1.3;
+            rotY = p * Math.PI * 2;
+            rotX = Math.sin(p * Math.PI) * 0.5;
+            rotZ = Math.cos(p * Math.PI * 2) * 0.3;
+            break;
+          }
+        }
+
+        // Expand floor shockwaves
         setShockwaveScale((prev) => prev + delta * 6.5);
-        setShockwaveOpacity((prev) => Math.max(0, prev - delta * 1.8));
+        setShockwaveOpacity((prev) => Math.max(0, prev - delta * 1.6));
       }
     }
 
-    // Apply Vertical Float & Jump
+    // Apply Position & Offsets
     groupRef.current.position.y = idleLevitation + jumpY;
+    groupRef.current.position.z = jumpZ;
+    groupRef.current.position.x = jumpX;
 
-    // Apply Flip Rotations to Shoe Group
-    if (shoeMeshRef.current) {
-      shoeMeshRef.current.rotation.x = flipRotX;
-      shoeMeshRef.current.rotation.y = flipRotY;
-      shoeMeshRef.current.rotation.z = flipRotZ;
-    }
+    // Apply Rotations to Shoe Group
+    shoeMeshRef.current.rotation.x = rotX;
+    shoeMeshRef.current.rotation.y = rotY;
+    shoeMeshRef.current.rotation.z = rotZ;
+
+    // Apply Scale Modifications (for compression/squash/stretch)
+    shoeMeshRef.current.scale.set(scaleModifierX, scaleModifierY, scaleModifierZ);
 
     // Dynamic Contact Shadow on Floor
     if (shadowRef.current) {
-      const shadowScale = (1 + jumpY * 0.45) * hoverScale;
-      const shadowAlpha = Math.max(0.08, 0.45 - jumpY * 0.22);
+      const shadowScale = (1 + jumpY * 0.35) * hoverScale;
+      const shadowAlpha = Math.max(0.06, 0.42 - jumpY * 0.2);
       shadowRef.current.scale.set(shadowScale * 2.8, shadowScale * 1.5, 1);
       (shadowRef.current.material as THREE.MeshBasicMaterial).opacity = shadowAlpha;
     }
 
+    // Expanding Floor Shockwave 1
     if (shockwaveRef.current) {
       shockwaveRef.current.scale.set(shockwaveScale, shockwaveScale, 1);
     }
+    // Expanding Floor Shockwave 2
+    if (shockwaveRef2.current) {
+      const scale2 = Math.max(0, shockwaveScale - 0.4);
+      shockwaveRef2.current.scale.set(scale2, scale2, 1);
+    }
   });
-
-  // Hotspots definitions for the shoe
-  const hotspots = useMemo(() => {
-    return [
-      {
-        id: 0,
-        position: [0.72, 0.48, 0.22] as [number, number, number],
-        title: universe.highlightTitle,
-        description: universe.highlightDescription,
-        material: universe.explodedLayers[0]?.material || 'Dynamic TPU Unit',
-      },
-      {
-        id: 1,
-        position: [-0.05, 0.08, 0.2] as [number, number, number],
-        title: universe.knowHowTitle,
-        description: universe.knowHowDescription,
-        material: universe.explodedLayers[1]?.material || 'Propulsion Plate',
-      },
-      {
-        id: 2,
-        position: [0.22, 0.82, -0.15] as [number, number, number],
-        title: 'ADAPTIVE HAPTIC CHASSIS',
-        description: 'Micro-ribbed dimensional weave engineered for instant anatomical lockdown.',
-        material: 'VaporWeave & Flyknit Mesh',
-      },
-    ];
-  }, [universe]);
 
   return (
     <group ref={groupRef} scale={[1.45, 1.45, 1.45]} position={[0, 0, 0]}>
@@ -261,11 +276,11 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
         />
       </mesh>
 
-      {/* 2. EXPANDING SONIC SHOCKWAVE ON FLOOR */}
+      {/* 2. EXPANDING SONIC SHOCKWAVES ON FLOOR */}
       {shockwaveOpacity > 0.01 && (
         <group position={[0, -0.96, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <mesh ref={shockwaveRef}>
-            <ringGeometry args={[0.8, 1.05, 48]} />
+            <ringGeometry args={[0.7, 0.95, 48]} />
             <meshBasicMaterial
               color={universe.accentColor}
               transparent
@@ -275,13 +290,25 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
               depthWrite={false}
             />
           </mesh>
+
+          <mesh ref={shockwaveRef2}>
+            <ringGeometry args={[1.05, 1.25, 48]} />
+            <meshBasicMaterial
+              color="#ffffff"
+              transparent
+              opacity={shockwaveOpacity * 0.6}
+              side={THREE.DoubleSide}
+              blending={THREE.AdditiveBlending}
+              depthWrite={false}
+            />
+          </mesh>
         </group>
       )}
 
-      {/* 3. HERO AUTHENTIC REAL 3D PHYSICAL NOVA SNEAKER MODEL */}
+      {/* 3. HERO AUTHENTIC REAL 3D PHYSICAL NOVA SNEAKER MODEL (CLICK TO TRIGGER CRAZY ANIMATION) */}
       <group
         ref={shoeMeshRef}
-        onClick={triggerRealisticFlip}
+        onClick={triggerShoeSpecificAnimation}
         onPointerOver={() => {
           document.body.style.cursor = 'pointer';
         }}
@@ -296,25 +323,8 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
             manualRotationY={manualRotationY}
             scrollProgress={scrollProgress}
             isHovered={isHovered}
-            activeHotspot={activeHotspotIndex}
           />
         </Suspense>
-
-        {/* 4. INTERACTIVE 3D HOTSPOT TELEMETRY PINS (Cartier-Style Hotspots) */}
-        {hotspots.map((hs) => (
-          <TechHotspotPin
-            key={hs.id}
-            position={hs.position}
-            title={hs.title}
-            description={hs.description}
-            material={hs.material}
-            color={universe.accentColor}
-            isActive={activeHotspotIndex === hs.id}
-            onToggle={() => {
-              setActiveHotspotIndex((prev) => (prev === hs.id ? -1 : hs.id));
-            }}
-          />
-        ))}
       </group>
     </group>
   );
