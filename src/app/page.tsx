@@ -10,7 +10,7 @@ import { CartDrawer } from '@/components/ui/CartDrawer';
 import { NikeCheckoutModal } from '@/components/ui/NikeCheckoutModal';
 import { OutroSection } from '@/components/ui/OutroSection';
 import { CartierTimelineScrubber } from '@/components/ui/CartierTimelineScrubber';
-import { Nova3DFootballKickOpening } from '@/components/intro/Nova3DFootballKickOpening';
+import { NovaQuantumShoeAssemblyOpening } from '@/components/intro/NovaQuantumShoeAssemblyOpening';
 import { audio } from '@/components/audio/NikeAudioEngine';
 import { useExperience } from '@/context/ExperienceContext';
 
@@ -294,9 +294,9 @@ export default function NikeInnovationPage() {
         />
       )}
 
-      {/* 9. Fullscreen 3D Football Fall, Kinetic Boot Strike & GOAL Opening Sequence */}
+      {/* 9. Fullscreen 3D Quantum Exploded Shoe Assembly & Rebirth Sequence */}
       {showIntro && (
-        <Nova3DFootballKickOpening onComplete={() => setShowIntro(false)} />
+        <NovaQuantumShoeAssemblyOpening onComplete={() => setShowIntro(false)} />
       )}
     </main>
   );
