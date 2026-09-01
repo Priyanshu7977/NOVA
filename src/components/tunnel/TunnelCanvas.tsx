@@ -215,7 +215,6 @@ export const TunnelCanvas: React.FC<TunnelCanvasProps> = ({
                   manualRotationY={isCurrent ? manualRotationY : 0}
                   scrollProgress={currentUniverseProgress}
                   isHovered={isCurrent && isInteracting}
-                  onClick={() => onSelectUniverse?.(universe)}
                 />
               </group>
             );

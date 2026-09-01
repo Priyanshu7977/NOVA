@@ -232,13 +232,14 @@ export default function NikeInnovationPage() {
       className="relative text-[#18181b] w-full h-screen overflow-hidden select-none transition-colors duration-700"
       style={{ backgroundColor: activeBgColor }}
     >
-      {/* 1. Top Luxury Navigation Bar with Bag Counter */}
+      {/* 1. Top Luxury Navigation Bar with Bag Counter & Explore Rooms */}
       <NikeTunnelNav
         currentUniverseIndex={currentProgress}
         onNavigateToUniverse={navigateToUniverse}
+        onOpenShoeModal={(u) => setSelectedUniverseModal(u)}
       />
 
-      {/* 2. 3D WebGL Contrasty Tunnel Canvas */}
+      {/* 2. 3D WebGL Contrasty Tunnel Canvas (3D Kick-Flip Physics on Shoe Click) */}
       {isMounted && (
         <CanvasErrorBoundary>
           <TunnelCanvas
@@ -249,7 +250,6 @@ export default function NikeInnovationPage() {
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
-            onSelectUniverse={(u) => setSelectedUniverseModal(u)}
           />
         </CanvasErrorBoundary>
       )}

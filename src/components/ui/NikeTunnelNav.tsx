@@ -10,11 +10,13 @@ import { useExperience } from '@/context/ExperienceContext';
 interface NikeTunnelNavProps {
   currentUniverseIndex: number;
   onNavigateToUniverse: (index: number) => void;
+  onOpenShoeModal?: (universe: any) => void;
 }
 
 export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
   currentUniverseIndex,
   onNavigateToUniverse,
+  onOpenShoeModal,
 }) => {
   const { cartItems, setIsCartOpen } = useExperience();
   const [isMuted, setIsMuted] = useState(true);
@@ -268,6 +270,7 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
                 onClick={() => {
                   onNavigateToUniverse(u.index);
                   setIsMenuOpen(false);
+                  onOpenShoeModal?.(u);
                 }}
                 style={{
                   backgroundColor: activePalette.badgeBg,
@@ -302,8 +305,8 @@ export const NikeTunnelNav: React.FC<NikeTunnelNavProps> = ({
                   <span className="font-sans text-xs font-bold" style={{ color: u.accentColor }}>
                     ₹{u.priceINR.toLocaleString('en-IN')}
                   </span>
-                  <span className="font-sans text-[10px] font-bold text-[#888888]">
-                    ${u.priceUSD}
+                  <span className="font-sans text-[10px] font-bold uppercase tracking-wider text-[#111111] group-hover:underline">
+                    VIEW & ACQUIRE →
                   </span>
                 </div>
               </button>

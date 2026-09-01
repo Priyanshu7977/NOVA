@@ -108,15 +108,14 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
     return new THREE.CanvasTexture(canvas);
   }, []);
 
-  // TRIGGER REALISTIC 3D KICK-FLIP ON CLICK
-  const triggerRealisticFlip = () => {
+  // TRIGGER REALISTIC 3D ACROBATIC KICK-FLIP ON 3D SHOE CLICK
+  const triggerRealisticFlip = (e?: any) => {
+    if (e && e.stopPropagation) e.stopPropagation();
     audio.playSonicBlast();
     setIsFlipping(true);
     flipProgressRef.current = 0;
     setShockwaveScale(0.2);
     setShockwaveOpacity(0.9);
-
-    if (onClick) onClick();
   };
 
   useFrame((state, delta) => {
