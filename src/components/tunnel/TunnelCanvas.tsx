@@ -3,7 +3,7 @@
 import React, { useMemo, useRef, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { NIKE_UNIVERSES, CONTRAST_ROOM_PALETTES } from '@/data/nikeUniverses';
+import { NIKE_UNIVERSES, CONTRAST_ROOM_PALETTES, NikeUniverseData } from '@/data/nikeUniverses';
 import { TunnelRooms } from './TunnelRooms';
 import { TunnelCameraRig } from './TunnelCameraRig';
 import { NikeSneakerRenderer } from './NikeSneakerRenderer';
@@ -17,6 +17,7 @@ interface TunnelCanvasProps {
   onPointerMove?: (e: React.PointerEvent) => void;
   onPointerUp?: (e: React.PointerEvent) => void;
   onSelectUniverse?: (universe: any) => void;
+  onInspectUniverse?: (universe: NikeUniverseData) => void;
 }
 
 // Dynamic Real-Time Color Interpolator for 3D Background & Fog
@@ -138,6 +139,7 @@ export const TunnelCanvas: React.FC<TunnelCanvasProps> = ({
   onPointerMove,
   onPointerUp,
   onSelectUniverse,
+  onInspectUniverse,
 }) => {
   const roomDistance = 24;
 
@@ -215,6 +217,7 @@ export const TunnelCanvas: React.FC<TunnelCanvasProps> = ({
                   manualRotationY={isCurrent ? manualRotationY : 0}
                   scrollProgress={currentUniverseProgress}
                   isHovered={isCurrent && isInteracting}
+                  onInspect={() => onInspectUniverse?.(universe)}
                 />
               </group>
             );

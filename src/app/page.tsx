@@ -11,6 +11,7 @@ import { NikeCheckoutModal } from '@/components/ui/NikeCheckoutModal';
 import { OutroSection } from '@/components/ui/OutroSection';
 import { CartierTimelineScrubber } from '@/components/ui/CartierTimelineScrubber';
 import { NovaQuantumShoeAssemblyOpening } from '@/components/intro/NovaQuantumShoeAssemblyOpening';
+import { SneakerMacroInspection3D } from '@/components/inspection/SneakerMacroInspection3D';
 import { audio } from '@/components/audio/NikeAudioEngine';
 import { useExperience } from '@/context/ExperienceContext';
 
@@ -46,6 +47,7 @@ export default function NikeInnovationPage() {
   const [showIntro, setShowIntro] = useState(true);
   const [currentProgress, setCurrentProgress] = useState(0); // Continuous float (0.0 to 7.0)
   const [selectedUniverseModal, setSelectedUniverseModal] = useState<NikeUniverseData | null>(null);
+  const [inspectedUniverse, setInspectedUniverse] = useState<NikeUniverseData | null>(null);
 
   // Gesture Interaction States
   const [isInteracting, setIsInteracting] = useState(false);
@@ -243,7 +245,7 @@ export default function NikeInnovationPage() {
         onReplayIntro={() => setShowIntro(true)}
       />
 
-      {/* 2. 3D WebGL Contrasty Tunnel Canvas (3D Kick-Flip Physics on Shoe Click) */}
+      {/* 2. 3D WebGL Contrasty Tunnel Canvas (Click to Open Cartier-Style 3D Exploded Inspection) */}
       {isMounted && (
         <CanvasErrorBoundary>
           <TunnelCanvas
@@ -254,6 +256,7 @@ export default function NikeInnovationPage() {
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
+            onInspectUniverse={(u) => setInspectedUniverse(u)}
           />
         </CanvasErrorBoundary>
       )}
@@ -294,7 +297,15 @@ export default function NikeInnovationPage() {
         />
       )}
 
-      {/* 9. Fullscreen 3D Quantum Exploded Shoe Assembly & Rebirth Sequence */}
+      {/* 9. Cartier-Style Fullscreen 3D Macro Sneaker Inspection & Exploded Deconstruction Studio */}
+      {inspectedUniverse && (
+        <SneakerMacroInspection3D
+          universe={inspectedUniverse}
+          onClose={() => setInspectedUniverse(null)}
+        />
+      )}
+
+      {/* 10. Fullscreen 3D Quantum Exploded Shoe Assembly & Rebirth Sequence */}
       {showIntro && (
         <NovaQuantumShoeAssemblyOpening onComplete={() => setShowIntro(false)} />
       )}

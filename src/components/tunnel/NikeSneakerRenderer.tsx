@@ -14,6 +14,7 @@ interface NikeSneakerRendererProps {
   manualRotationY?: number;
   scrollProgress?: number;
   isHovered?: boolean;
+  onInspect?: () => void;
 }
 
 export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
@@ -22,6 +23,7 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
   manualRotationY = 0,
   scrollProgress = 0,
   isHovered = false,
+  onInspect,
 }) => {
   const groupRef = useRef<THREE.Group>(null);
   const shoeMeshRef = useRef<THREE.Group>(null);
@@ -89,6 +91,10 @@ export const NikeSneakerRenderer: React.FC<NikeSneakerRendererProps> = ({
     animProgressRef.current = 0;
     setShockwaveScale(0.2);
     setShockwaveOpacity(1.0);
+
+    setTimeout(() => {
+      onInspect?.();
+    }, 400);
   };
 
   useFrame((state, delta) => {
